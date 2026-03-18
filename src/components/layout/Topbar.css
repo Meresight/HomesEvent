@@ -1,0 +1,79 @@
+.app-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 64px;
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.topbar-search {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-main);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    width: 400px;
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.topbar-search:focus-within {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-card);
+    box-shadow: 0 0 0 2px rgba(10, 25, 47, 0.1);
+}
+
+.search-icon {
+    color: var(--color-text-muted);
+    margin-right: 8px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-text-main);
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-btn {
+    position: relative;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast);
+}
+
+.icon-btn:hover {
+    color: var(--color-primary);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-danger);
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-card);
+}
+
+.profile-dropdown {
+    cursor: pointer;
+}
