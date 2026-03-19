@@ -46,6 +46,36 @@
     color: var(--color-primary);
 }
 
+.sidebar-sub-nav {
+    list-style: none;
+    padding-left: 28px;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-sub-link {
+    display: block;
+    padding: 6px 16px;
+    border-radius: var(--radius-md);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.825rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.sidebar-sub-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-sub-link.active {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
 .sidebar-icon {
     flex-shrink: 0;
 }

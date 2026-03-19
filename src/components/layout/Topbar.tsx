@@ -9,7 +9,7 @@ export default function Topbar() {
                 <Search className="search-icon" size={18} />
                 <input
                     type="text"
-                    placeholder="Search events, announcements..."
+                    placeholder="Search brands, properties, or lawyers..."
                     className="search-input"
                 />
             </div>
