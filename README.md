@@ -54,4 +54,4 @@ A modern, enterprise-level internal Event Management System designed for Homes.p
 - `src/globals.css`: Global styles and design system tokens.
 
 ---
-Built with ❤️ by the Homes.ph Engineering Team
+Built with by the FilipinoHomes.ph Task-O Team
