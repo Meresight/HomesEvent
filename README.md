@@ -2,7 +2,7 @@
 
 A modern, enterprise-level internal Event Management System designed for Homes.ph. This platform streamlines event discovery, registration, and management with a polished, high-performance interface.
 
-## 🚀 Key Features
+##  Key Features
 
 - **Interactive Dashboard**: A unified view of featured events, upcoming schedules, and latest announcements.
 - **Event Management**: Comprehensive event discovery with detailed information and registration capabilities.
@@ -11,7 +11,7 @@ A modern, enterprise-level internal Event Management System designed for Homes.p
 - **Admin Control Panel**: Dedicated interface for administrators to manage events, announcements, and system settings.
 - **Responsive & Modern UI**: A premium user experience inspired by Homes.ph News, built with performance and aesthetics in mind.
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Framework**: [Next.js](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
