@@ -4,12 +4,12 @@ import Topbar from './Topbar';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="app-layout">
+        <div className="flex min-h-screen">
             <Sidebar />
-            <div className="app-main">
+            <div className="flex-grow flex flex-col overflow-hidden">
                 <Topbar />
-                <main className="app-content">
-                    <div className="container">
+                <main className="flex-grow p-8 overflow-y-auto">
+                    <div className="max-w-[1200px] mx-auto">
                         {children}
                     </div>
                 </main>

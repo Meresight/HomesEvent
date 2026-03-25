@@ -11,63 +11,45 @@ export default function RegistrationsModule() {
     ];
 
     return (
-        <div>
-            <div className="section-header">
-                <h1 className="section-title" style={{ fontSize: '2rem' }}>My Registrations</h1>
+        <div className="max-w-[800px] mx-auto">
+            <div className="flex justify-between items-center mb-6">
+                <h1 className="text-3xl font-bold text-primary">My Registrations</h1>
             </div>
 
-            <div style={{ display: 'grid', gap: '24px' }}>
+            <div className="grid gap-6">
                 {registrations.map(reg => {
                     const dateObj = new Date(reg.date);
                     const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
                     const formattedTime = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
                     return (
-                        <div key={reg.id} className="card" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                            <div style={{
-                                width: '100px',
-                                height: '100px',
-                                backgroundColor: 'var(--color-bg-main)',
-                                borderRadius: 'var(--radius-md)',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                border: '1px solid var(--color-border)'
-                            }}>
-                                <span style={{ color: 'var(--color-danger)', fontWeight: 700, fontSize: '0.875rem', textTransform: 'uppercase' }}>{dateObj.toLocaleDateString('en-US', { month: 'short' })}</span>
-                                <span style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '2rem', lineHeight: 1 }}>{dateObj.toLocaleDateString('en-US', { day: '2-digit' })}</span>
+                        <div key={reg.id} className="bg-background-card rounded-md shadow-soft p-6 border border-border flex gap-6 items-center">
+                            <div className="w-[100px] h-[100px] bg-background-main rounded-md flex flex-col justify-center items-center border border-border">
+                                <span className="text-danger font-bold text-sm uppercase">{dateObj.toLocaleDateString('en-US', { month: 'short' })}</span>
+                                <span className="text-primary font-bold text-3xl leading-none">{dateObj.toLocaleDateString('en-US', { day: '2-digit' })}</span>
                             </div>
 
-                            <div style={{ flexGrow: 1 }}>
-                                <Link href={`/events/${reg.eventId}`} style={{ display: 'inline-block' }}>
-                                    <h2 style={{ fontSize: '1.25rem', color: 'var(--color-primary)', margin: '0 0 8px 0' }}>{reg.title}</h2>
+                            <div className="flex-grow">
+                                <Link href={`/events/${reg.eventId}`} className="inline-block group">
+                                    <h2 className="text-xl font-semibold text-primary mb-2 group-hover:text-accent transition-colors">{reg.title}</h2>
                                 </Link>
-                                <div style={{ display: 'flex', gap: '24px', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <div className="flex gap-6 text-sm text-text-muted">
+                                    <div className="flex items-center gap-1.5">
                                         <Calendar size={14} />
                                         <span>{formattedDate} at {formattedTime}</span>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <div className="flex items-center gap-1.5">
                                         <MapPin size={14} />
                                         <span>{reg.location}</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '16px' }}>
-                                <span style={{
-                                    padding: '4px 12px',
-                                    backgroundColor: 'var(--color-success-bg)',
-                                    color: 'var(--color-success)',
-                                    borderRadius: 'var(--radius-full)',
-                                    fontSize: '0.75rem',
-                                    fontWeight: 600,
-                                    textTransform: 'uppercase'
-                                }}>
+                            <div className="flex flex-col items-end gap-4">
+                                <span className="px-3 py-1 bg-success/10 text-success rounded-full text-[10px] font-bold uppercase tracking-wider">
                                     {reg.status}
                                 </span>
-                                <button className="btn btn-secondary" style={{ padding: '6px 12px', fontSize: '0.75rem', display: 'flex', gap: '6px', color: 'var(--color-danger)', borderColor: 'var(--color-danger)' }}>
+                                <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-danger border border-danger/20 rounded-md hover:bg-danger/5 transition-colors">
                                     <XCircle size={14} />
                                     Cancel Registration
                                 </button>
@@ -77,11 +59,13 @@ export default function RegistrationsModule() {
                 })}
 
                 {registrations.length === 0 && (
-                    <div className="card" style={{ textAlign: 'center', padding: '48px' }}>
-                        <Ticket size={48} color="var(--color-text-muted)" style={{ margin: '0 auto 16px', opacity: 0.5 }} />
-                        <h3 style={{ margin: '0 0 8px 0', color: 'var(--color-primary)' }}>No Registrations Yet</h3>
-                        <p style={{ color: 'var(--color-text-muted)', marginBottom: '24px' }}>You haven't registered for any upcoming events.</p>
-                        <Link href="/events" className="btn btn-primary">Discover Events</Link>
+                    <div className="bg-background-card rounded-lg shadow-soft p-12 text-center border border-border">
+                        <Ticket size={48} className="text-text-muted mx-auto mb-4 opacity-50" />
+                        <h3 className="text-xl font-bold text-primary mb-2">No Registrations Yet</h3>
+                        <p className="text-text-muted mb-6">You haven&apos;t registered for any upcoming events.</p>
+                        <Link href="/events" className="bg-accent hover:bg-accent-hover text-primary px-6 py-2 rounded-md font-bold transition-all shadow-sm">
+                            Discover Events
+                        </Link>
                     </div>
                 )}
             </div>

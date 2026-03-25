@@ -2,7 +2,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Calendar as CalendarIcon, MapPin, Clock, Users, Building, Tag, Info } from 'lucide-react';
-import '../events.css';
 
 export default function EventDetails() {
     // Using mock data for the prototype
@@ -32,27 +31,29 @@ export default function EventDetails() {
 
     return (
         <div>
-            <Link href="/events" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', color: 'var(--color-text-muted)', fontWeight: 500 }}>
+            <Link href="/events" className="inline-flex items-center gap-2 mb-6 text-text-muted font-medium hover:text-primary transition-colors">
                 <ArrowLeft size={18} />
                 Back to Events
             </Link>
 
-            <div className="event-details-hero">
-                <div className="hero-overlay"></div>
+            <div className="h-[300px] rounded-lg bg-primary relative overflow-hidden flex items-end p-10 mb-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-primary/30 z-10"></div>
                 <img
                     src={event.image}
                     alt={event.title}
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+                    className="absolute inset-0 w-full h-full object-cover z-0"
                 />
-                <div className="hero-content">
-                    <span className="featured-tag">{event.category}</span>
-                    <h1 className="hero-title">{event.title}</h1>
-                    <div className="hero-meta">
-                        <div className="event-meta-row">
+                <div className="relative z-20 text-white w-full">
+                    <span className="bg-accent text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4 inline-block">
+                        {event.category}
+                    </span>
+                    <h1 className="text-4xl font-bold mb-4">{event.title}</h1>
+                    <div className="flex gap-6 items-center">
+                        <div className="flex items-center gap-2">
                             <CalendarIcon size={18} />
                             <span>{formattedDates}</span>
                         </div>
-                        <div className="event-meta-row">
+                        <div className="flex items-center gap-2">
                             <MapPin size={18} />
                             <span>{event.location}</span>
                         </div>
@@ -60,55 +61,55 @@ export default function EventDetails() {
                 </div>
             </div>
 
-            <div className="event-content-grid">
-                <div>
-                    <div className="event-section">
-                        <h2 className="event-section-title">About This Event</h2>
-                        <div style={{ whiteSpace: 'pre-line', color: 'var(--color-text-main)', lineHeight: '1.6' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2 flex flex-col gap-6">
+                    <div className="bg-background-card p-8 rounded-lg border border-border">
+                        <h2 className="text-2xl font-bold text-primary mb-4">About This Event</h2>
+                        <div className="whitespace-pre-line text-text-main leading-relaxed">
                             {event.description}
                         </div>
                     </div>
 
-                    <div className="event-section">
-                        <h2 className="event-section-title">Agenda</h2>
-                        <div className="announcement-list">
+                    <div className="bg-background-card p-8 rounded-lg border border-border">
+                        <h2 className="text-2xl font-bold text-primary mb-4">Agenda</h2>
+                        <div className="flex flex-col gap-0">
                             {event.agenda.map((item, index) => (
-                                <div key={index} className="announcement-item" style={{ padding: '16px 0' }}>
-                                    <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--color-primary)', marginBottom: '4px' }}>{item.day}</h3>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-text-muted)', fontSize: '0.875rem', marginBottom: '8px' }}>
+                                <div key={index} className="py-4 border-b border-border last:border-0">
+                                    <h3 className="text-lg font-bold text-primary mb-1">{item.day}</h3>
+                                    <div className="flex items-center gap-2 text-text-muted text-sm mb-2">
                                         <Clock size={14} />
                                         <span>{item.times}</span>
                                     </div>
-                                    <p style={{ margin: 0, color: 'var(--color-text-main)' }}>{item.desc}</p>
+                                    <p className="text-text-main">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div className="card registration-card">
-                        <h3 className="section-title" style={{ marginBottom: '24px' }}>Registration</h3>
+                <div className="lg:col-span-1">
+                    <div className="bg-background-card p-8 rounded-lg border border-border sticky top-6">
+                        <h3 className="text-xl font-bold text-primary mb-6">Registration</h3>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
-                            <div className="event-meta-row">
-                                <Users size={18} color="var(--color-text-muted)" />
-                                <span style={{ fontWeight: 500 }}>{event.attendees} / {event.maxAttendees} Registered</span>
+                        <div className="flex flex-col gap-4 mb-8">
+                            <div className="flex items-center gap-3">
+                                <Users size={18} className="text-text-muted" />
+                                <span className="font-semibold">{event.attendees} / {event.maxAttendees} Registered</span>
                             </div>
-                            <div className="event-meta-row">
-                                <Building size={18} color="var(--color-text-muted)" />
-                                <span>Organizer: <strong>{event.organizer}</strong></span>
+                            <div className="flex items-center gap-3">
+                                <Building size={18} className="text-text-muted" />
+                                <span>Organizer: <strong className="font-semibold">{event.organizer}</strong></span>
                             </div>
-                            <div className="event-meta-row">
-                                <Tag size={18} color="var(--color-text-muted)" />
-                                <span>Category: <strong>{event.category}</strong></span>
+                            <div className="flex items-center gap-3">
+                                <Tag size={18} className="text-text-muted" />
+                                <span>Category: <strong className="font-semibold">{event.category}</strong></span>
                             </div>
                         </div>
 
-                        <button className="btn btn-primary" style={{ width: '100%', padding: '14px', fontSize: '16px', marginBottom: '16px' }}>
+                        <button className="w-full py-3.5 bg-accent hover:bg-accent-hover text-primary font-bold rounded-md transition-all shadow-sm mb-4">
                             Register for Event
                         </button>
-                        <div style={{ textAlign: 'center', fontSize: '0.875rem', color: 'var(--color-text-muted)', display: 'flex', justifyContent: 'center', gap: '6px', alignItems: 'center' }}>
+                        <div className="flex justify-center items-center gap-1.5 text-sm text-text-muted">
                             <Info size={14} />
                             <span>Registration ends Oct 15, 2026</span>
                         </div>

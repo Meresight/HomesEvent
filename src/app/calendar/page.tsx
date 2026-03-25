@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Calendar as CalIcon } from 'lucide-react';
-import '../events/events.css';
 
 export default function CalendarModule() {
     const [currentDate, setCurrentDate] = useState(new Date('2026-10-01'));
@@ -27,58 +26,55 @@ export default function CalendarModule() {
     };
 
     return (
-        <div className="events-container">
-            <div className="section-header">
-                <h1 className="section-title" style={{ fontSize: '2rem' }}>Event Calendar</h1>
+        <div className="flex flex-col gap-6">
+            <div className="flex justify-between items-center">
+                <h1 className="text-3xl font-bold text-primary">Event Calendar</h1>
             </div>
 
-            <div className="card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <h2 style={{ fontSize: '1.5rem', margin: 0, color: 'var(--color-primary)' }}>October 2026</h2>
-                        <div style={{ display: 'flex', gap: '8px' }}>
-                            <button className="icon-btn" style={{ padding: '8px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
+            <div className="bg-background-card p-8 rounded-lg border border-border shadow-soft">
+                <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center gap-4">
+                        <h2 className="text-2xl font-bold text-primary">October 2026</h2>
+                        <div className="flex gap-2">
+                            <button className="p-2 border border-border rounded-md hover:bg-background-main transition-colors">
                                 <ChevronLeft size={16} />
                             </button>
-                            <button className="icon-btn" style={{ padding: '8px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
+                            <button className="p-2 border border-border rounded-md hover:bg-background-main transition-colors">
                                 <ChevronRight size={16} />
                             </button>
                         </div>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                        <button className="filter-btn active">Month</button>
-                        <button className="filter-btn">Week</button>
-                        <button className="filter-btn">Day</button>
+                    <div className="flex gap-2">
+                        <button className="px-4 py-2 rounded-full text-sm font-medium bg-primary text-white border-primary">Month</button>
+                        <button className="px-4 py-2 rounded-full text-sm font-medium bg-background-card text-text-muted border border-border hover:bg-background-main transition-all">Week</button>
+                        <button className="px-4 py-2 rounded-full text-sm font-medium bg-background-card text-text-muted border border-border hover:bg-background-main transition-all">Day</button>
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1px', backgroundColor: 'var(--color-border)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+                <div className="grid grid-cols-7 gap-px bg-border border border-border rounded-lg overflow-hidden">
                     {/* Day Headers */}
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
-                        <div key={d} style={{ padding: '12px', backgroundColor: 'var(--color-bg-main)', textAlign: 'center', fontWeight: 600, fontSize: '0.875rem' }}>
+                        <div key={d} className="p-3 bg-background-main text-center font-bold text-xs uppercase tracking-wider text-text-muted">
                             {d}
                         </div>
                     ))}
 
                     {/* Days */}
                     {days.map((day, i) => (
-                        <div key={i} style={{
-                            minHeight: '120px',
-                            backgroundColor: 'var(--color-bg-card)',
-                            padding: '8px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '4px'
-                        }}>
+                        <div key={i} className="min-h-[120px] bg-background-card p-2 flex flex-col gap-1.5 hover:bg-background-main/50 transition-colors">
                             {day && (
                                 <>
-                                    <span style={{ fontWeight: 500, fontSize: '0.875rem', color: day === 15 ? 'var(--color-accent)' : 'var(--color-text-main)', display: 'inline-block', padding: day === 15 ? '2px 6px' : '2px 6px', backgroundColor: day === 15 ? 'var(--color-primary)' : 'transparent', borderRadius: '100px' }}>
+                                    <span className={`w-7 h-7 flex items-center justify-center font-semibold text-sm rounded-full transition-all ${
+                                        day === 15 
+                                        ? 'bg-primary text-white shadow-sm' 
+                                        : 'text-text-main'
+                                    }`}>
                                         {day}
                                     </span>
                                     {events[day] && events[day].map((evt, idx) => (
-                                        <div key={idx} style={{ padding: '4px 6px', backgroundColor: 'var(--color-bg-main)', borderLeft: '2px solid var(--color-accent)', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer' }}>
-                                            <div style={{ fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.title}</div>
-                                            <div style={{ color: 'var(--color-text-muted)' }}>{evt.time}</div>
+                                        <div key={idx} className="p-2 bg-background-main border-l-4 border-accent rounded-r-md text-[10px] cursor-pointer hover:bg-background-main/80 transition-all">
+                                            <div className="font-bold text-primary truncate">{evt.title}</div>
+                                            <div className="text-text-muted">{evt.time}</div>
                                         </div>
                                     ))}
                                 </>
