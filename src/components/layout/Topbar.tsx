@@ -24,7 +24,7 @@ export default function Topbar() {
             </div>
 
             <div className="flex items-center gap-8">
-                <button className="hidden sm:flex items-center gap-2.5 bg-[#FFB020] text-[#0A192F] px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-wider hover:scale-105 transition-all shadow-lg active:scale-95">
+                <button className="hidden sm:flex items-center gap-2.5 bg-[#002143] text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-wider hover:scale-105 hover:shadow-xl transition-all active:scale-95 shadow-[0_10px_20px_-5px_rgba(0,33,67,0.3)]">
                     <Plus size={16} strokeWidth={3} />
                     Add Event
                 </button>

@@ -35,8 +35,8 @@ const availableEvents = [
     {
         id: 1,
         title: 'CPD Ethics Seminar',
-        date: 'Dec 23, 2024',
-        time: '12:00AM - 02:30PM',
+        date: 'December 23,2024',
+        time: 'June 31, 2024 • 12:00AM - 3:30pm',
         image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800',
         tags: ['Education', 'CPD'],
         price: 'Free'
@@ -44,12 +44,28 @@ const availableEvents = [
     {
         id: 2,
         title: 'Real Estate Coaching',
-        date: 'Dec 25, 2024',
-        time: '09:00AM - 11:30AM',
+        date: 'December 23,2024',
+        time: 'March 1, 2024 • 12:00AM - 3:30pm',
         image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800',
-        tags: ['Coaching'],
+        tags: ['Find a coach'],
         price: '₱500'
+    },
+    {
+        id: 3,
+        title: 'Real Estate Seminar',
+        date: 'December 23,2024',
+        time: 'March 1, 2024 • 12:00AM - 3:30pm',
+        image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=800',
+        tags: ['Education'],
+        price: 'Free'
     }
+];
+
+const recentRegistrations = [
+    { id: 1, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=1' },
+    { id: 2, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=2' },
+    { id: 3, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=3' },
+    { id: 4, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=4' },
 ];
 
 export default function HomePage() {
@@ -189,60 +205,80 @@ export default function HomePage() {
                 </div>
             </div>
 
-            {/* Available Events Section */}
-            <div className="flex flex-col gap-10">
-                <div className="flex justify-between items-end">
-                    <div>
+            {/* Available Events & Recent Registration Section */}
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-10 items-stretch">
+                {/* Available Events Column */}
+                <div className="xl:col-span-2 bg-white p-12 rounded-[48px] border border-[#F1F5F9] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] relative overflow-hidden group/container flex flex-col">
+                    <div className="flex justify-between items-center mb-10">
                         <h3 className="text-3xl font-black text-[#0A192F] tracking-tight">Available Events</h3>
-                        <p className="text-sm font-bold text-[#94A3B8] mt-1">Recommended for your CPD requirements</p>
-                    </div>
-                    <div className="flex gap-3">
-                        <button className="p-3 bg-white border border-[#F1F5F9] rounded-2xl shadow-sm text-[#0A192F] hover:bg-[#F8FAFC] transition-all"><Search size={20}/></button>
-                        <button className="p-3 bg-white border border-[#F1F5F9] rounded-2xl shadow-sm text-[#0A192F] hover:bg-[#F8FAFC] transition-all"><Filter size={20}/></button>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {availableEvents.map(event => (
-                        <div key={event.id} className="bg-white rounded-[48px] overflow-hidden border border-[#F1F5F9] shadow-[0_15px_45px_-20px_rgba(0,0,0,0.05)] group hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.1)] transition-all duration-700 flex flex-col hover:-translate-y-2">
-                            <div className="h-72 relative overflow-hidden">
-                                <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                <div className="absolute top-8 left-8 flex gap-2">
-                                    {event.tags.map(tag => (
-                                        <span key={tag} className="bg-white/90 backdrop-blur-md text-[#0A192F] text-[9px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-xl">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                                <div className="absolute bottom-8 right-8 bg-[#FFB020] text-[#0A192F] px-4 py-2 rounded-2xl font-black text-xs shadow-2xl">
-                                    {event.price}
-                                </div>
+                        <div className="flex items-center gap-6">
+                            <div className="flex gap-1.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#0A192F]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
                             </div>
-                            <div className="p-12">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h4 className="text-2xl font-black text-[#0A192F] leading-tight group-hover:text-[#2B5CFE] transition-colors">{event.title}</h4>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-xs font-black text-[#94A3B8] uppercase tracking-[0.2em]">{event.date}</p>
-                                    <div className="text-sm text-[#2B5CFE] font-bold flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B5CFE]" />
-                                        {event.time}
+                            <span className="text-[11px] font-black text-[#0A192F] cursor-pointer hover:underline uppercase tracking-widest bg-[#F8FAFC] px-4 py-2 rounded-full transition-all hover:bg-[#F1F5F9]">View all</span>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-10 overflow-x-auto pb-8 scrollbar-hide snap-x flex-grow">
+                        {availableEvents.map(event => (
+                            <div key={event.id} className="min-w-[450px] bg-white rounded-[40px] overflow-hidden border border-[#F1F5F9] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] group hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.1)] transition-all duration-700 flex flex-col hover:-translate-y-2 snap-start">
+                                <div className="h-64 relative overflow-hidden">
+                                    <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                                    <div className="absolute top-8 left-8 flex gap-2">
+                                        {event.tags.map(tag => (
+                                            <span key={tag} className="bg-[#0A192F]/80 backdrop-blur-md text-white text-[9px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-xl">
+                                                {tag}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
-                                <button className="mt-8 w-full py-4 bg-[#F8FAFC] group-hover:bg-[#0A192F] text-[#0A192F] group-hover:text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-500 shadow-sm group-hover:shadow-xl">
-                                    View Event Details
-                                </button>
+                                <div className="p-10 flex flex-col flex-grow">
+                                    <h4 className="text-2xl font-black text-[#0A192F] leading-tight mb-3 group-hover:text-[#002143] transition-colors">{event.title}</h4>
+                                    <div className="mt-auto">
+                                        <p className="text-[11px] font-black text-[#94A3B8] uppercase tracking-[0.2em] mb-4">{event.date}</p>
+                                        <div className="flex items-center gap-2 text-[11px] font-bold text-[#002143] bg-[#002143]/5 px-4 py-2 rounded-xl w-fit">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-[#002143] animate-pulse" />
+                                            {event.time}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
-                <div className="flex justify-center mt-6">
-                    <button className="group flex items-center gap-4 px-12 py-5 border-2 border-[#FFB020] text-[#FFB020] rounded-full text-sm font-black hover:bg-[#FFB020] hover:text-white transition-all shadow-2xl hover:shadow-[#FFB020]/20">
-                        Load More Experiences
-                        <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                    </button>
+                {/* Recent Registration Column */}
+                <div className="bg-white p-12 rounded-[48px] border border-[#F1F5F9] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] flex flex-col h-full">
+                    <div className="flex justify-between items-center mb-10">
+                        <h3 className="text-2xl font-black text-[#0A192F] tracking-tight">Recent Registration</h3>
+                        <div className="flex items-center gap-6">
+                            <div className="flex gap-1.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#002143]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
+                            </div>
+                            <span className="text-[11px] font-black text-[#0A192F] cursor-pointer hover:underline uppercase tracking-widest bg-[#F8FAFC] px-4 py-2 rounded-full transition-all hover:bg-[#F1F5F9]">View all</span>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-5 flex-grow">
+                        {recentRegistrations.map(reg => (
+                            <div key={reg.id} className="flex items-center justify-between p-5 bg-white border border-[#F1F5F9] rounded-[32px] hover:shadow-xl transition-all group/item hover:-translate-y-1 duration-300">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#F1F5F9] group-hover/item:border-[#002143]/20 transition-all shadow-sm">
+                                        <img src={reg.avatar} alt={reg.name} className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-500" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-black text-[#0A192F]">{reg.name}</p>
+                                        <p className="text-[10px] font-black text-[#FFB020] uppercase tracking-widest mt-0.5">{reg.event}</p>
+                                    </div>
+                                </div>
+                                <button className="text-[10px] font-black text-[#0A192F] uppercase tracking-widest hover:text-white transition-colors bg-[#F8FAFC] px-5 py-3 rounded-xl group-hover/item:bg-[#002143] group-hover/item:shadow-[0_10px_20px_-5px_rgba(0,33,67,0.4)] transition-all">Details</button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,159 +1,144 @@
 "use client";
 import React from 'react';
 import { 
-    Award, 
-    FileText, 
     Download, 
     Calendar,
-    Search,
-    Filter,
-    ArrowUpRight,
-    ChevronRight,
-    CheckCircle2,
-    Clock
+    Award,
+    FileText
 } from 'lucide-react';
-import StatCard from '@/components/shared/StatCard';
 
 const creditHistory = [
-    { id: 1, event: 'Ethics in Real Estate', date: 'Oct 15, 2024', points: 15, status: 'Approved' },
-    { id: 2, event: 'Advanced Property Laws', date: 'Sep 10, 2024', points: 10, status: 'Approved' },
-    { id: 3, event: 'Green Building 101', date: 'Aug 05, 2024', points: 5, status: 'Pending' },
+    { id: 1, event: 'Legal Updates in RE 2026', date: 'Mar 14', category: 'Technical', hours: '3 hrs' },
+    { id: 2, event: 'Legal Updates in RE 2026', date: 'Mar 14', category: 'Technical', hours: '3 hrs' },
+    { id: 3, event: 'Legal Updates in RE 2026', date: 'Mar 14', category: 'Technical', hours: '3 hrs' },
+    { id: 4, event: 'Legal Updates in RE 2026', date: 'Mar 14', category: 'Technical', hours: '3 hrs' },
+    { id: 5, event: 'Legal Updates in RE 2026', date: 'Mar 14', category: 'Technical', hours: '3 hrs' },
+    { id: 6, event: 'Legal Updates in RE 2026', date: 'Mar 14', category: 'Technical', hours: '3 hrs' },
 ];
 
-const certificates = [
-    { id: 1, name: 'Ethics Seminar 2024', date: 'Oct 20, 2024', size: '1.2 MB' },
-    { id: 2, name: 'Law Mastery Course', date: 'Sep 15, 2024', size: '0.8 MB' },
-    { id: 3, name: 'Sales Strategy Workshop', date: 'Aug 10, 2024', size: '1.5 MB' },
-];
+const certificates = [1, 2, 3, 4];
 
 export default function CPDRecords() {
     return (
-        <div className="flex flex-col gap-12 pb-24">
-            <div className="flex justify-between items-end">
+        <div className="flex flex-col gap-10 pb-24 max-w-[1400px]">
+            {/* Header Area */}
+            <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-4xl font-black text-[#0A192F] tracking-tight mb-2">My CPD Records</h1>
-                    <p className="text-sm font-bold text-[#94A3B8]">Professional Development Tracking & Credentials</p>
+                    <h1 className="text-3xl font-black text-[#0A192F] tracking-tight mb-2 uppercase">My CPD Records</h1>
                 </div>
-                <button className="px-8 py-4 bg-[#F8FAFC] border border-[#F1F5F9] text-[#0A192F] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#0A192F] hover:text-white transition-all shadow-sm">
-                    Generate Report
-                </button>
             </div>
 
-            {/* Stats Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <StatCard 
-                    title="Total CPD Points" 
-                    value="45" 
-                    icon={Award} 
-                    iconColor="orange" 
-                />
-                <StatCard 
-                    title="Required Points" 
-                    value="60" 
-                    icon={FileText} 
-                    iconColor="blue" 
-                />
-                <StatCard 
-                    title="Next Renewal" 
-                    value="Dec 2025" 
-                    icon={Calendar} 
-                    iconColor="green" 
-                />
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-                {/* Credit History Table */}
-                <div className="lg:col-span-2 bg-white rounded-[48px] border border-[#F1F5F9] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.08)]">
-                    <div className="p-10 border-b border-[#F1F5F9] flex justify-between items-center">
-                        <h3 className="text-xl font-black text-[#0A192F] tracking-tight">Credit History</h3>
-                        <div className="flex gap-3">
-                             <div className="relative group">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94A3B8] transition-colors group-focus-within:text-[#2B5CFE]" size={16} />
-                                <input 
-                                    type="text" 
-                                    placeholder="Search..." 
-                                    className="pl-12 pr-4 py-3 bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl text-xs font-bold w-48 focus:w-64 focus:ring-4 focus:ring-[#2B5CFE]/5 outline-none transition-all shadow-sm"
-                                />
-                             </div>
-                             <button className="p-3 bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl text-[#0A192F] hover:bg-[#E2E8F0] transition-colors">
-                                <Filter size={18} />
-                             </button>
+            {/* Top Stats Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sticky top-0 z-10">
+                {/* Current cycle progress */}
+                <div className="md:col-span-4 bg-white p-10 rounded-[32px] border border-[#F1F5F9] shadow-sm flex flex-col gap-8">
+                    <div className="flex flex-col gap-1">
+                        <span className="text-xs font-bold text-[#94A3B8]">Current cycle progress</span>
+                        <div className="flex items-baseline gap-2">
+                            <span className="text-5xl font-black text-[#0A192F]">14</span>
+                            <span className="text-lg font-bold text-[#94A3B8]">/ 30 hrs</span>
                         </div>
                     </div>
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="bg-[#F8FAFC]/50">
-                                    <th className="px-10 py-5 text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] border-b border-[#F1F5F9]">Event Details</th>
-                                    <th className="px-10 py-5 text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] border-b border-[#F1F5F9]">Completion Date</th>
-                                    <th className="px-10 py-5 text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] border-b border-[#F1F5F9] text-center">Credits</th>
-                                    <th className="px-10 py-5 text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] border-b border-[#F1F5F9]">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-[#F1F5F9]">
-                                {creditHistory.map((item) => (
-                                    <tr key={item.id} className="hover:bg-[#F8FAFC] transition-all duration-300 group">
-                                        <td className="px-10 py-6">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#2B5CFE] group-hover:bg-[#2B5CFE] group-hover:text-white transition-all duration-500">
-                                                    <Award size={18} strokeWidth={2.5} />
-                                                </div>
-                                                <span className="font-bold text-[15px] text-[#0A192F]">{item.event}</span>
-                                            </div>
-                                        </td>
-                                        <td className="px-10 py-6 text-sm font-bold text-[#94A3B8]">{item.date}</td>
-                                        <td className="px-10 py-6 text-center">
-                                            <span className="inline-block px-4 py-1.5 bg-white border border-[#F1F5F9] shadow-sm rounded-full text-xs font-black text-[#0A192F] group-hover:border-[#FFB020] transition-colors">
-                                                +{item.points} pts
-                                            </span>
-                                        </td>
-                                        <td className="px-10 py-6">
-                                            <span className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full flex items-center justify-center w-fit gap-2 shadow-sm ${
-                                                item.status === 'Approved' ? 'bg-green-50 text-green-600 border border-green-100' : 'bg-orange-50 text-orange-500 border border-orange-100'
-                                            }`}>
-                                                {item.status === 'Approved' ? <CheckCircle2 size={10} /> : <Clock size={10} />}
-                                                {item.status}
-                                            </span>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="p-6 bg-[#F8FAFC]/30">
-                        <button className="w-full py-5 bg-white border border-[#F1F5F9] rounded-2xl text-[11px] font-black text-[#0A192F] hover:bg-[#0A192F] hover:text-white transition-all duration-500 shadow-sm flex items-center justify-center gap-3 group/btn uppercase tracking-widest">
-                            Access Full Credit Transcript
-                            <ChevronRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
-                        </button>
+                    <div className="flex flex-col gap-4">
+                        <div className="w-full h-3 bg-[#F1F5F9] rounded-full overflow-hidden">
+                            <div className="w-[46%] h-full bg-[#FFB020] rounded-full" />
+                        </div>
+                        <p className="text-[11px] font-bold text-[#94A3B8]">Cycle ends Dec 31, 2026 • 16 hrs remaining</p>
                     </div>
                 </div>
 
-                {/* Certificate Downloads */}
-                <div className="bg-white rounded-[48px] border border-[#F1F5F9] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] flex flex-col transition-all duration-500 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.08)]">
-                    <div className="p-10 border-b border-[#F1F5F9]">
-                        <h3 className="text-xl font-black text-[#0A192F] tracking-tight">Certifications</h3>
+                {/* Hours by category */}
+                <div className="md:col-span-5 bg-white p-10 rounded-[32px] border border-[#F1F5F9] shadow-sm flex flex-col gap-6">
+                    <span className="text-xs font-bold text-[#94A3B8]">Hours by category</span>
+                    <div className="flex flex-col gap-5">
+                        <div className="flex flex-col gap-2">
+                            <div className="flex justify-between text-[11px] font-bold text-[#0A192F]">
+                                <span>Technical</span>
+                            </div>
+                            <div className="w-full h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
+                                <div className="w-[75%] h-full bg-[#387CFF] rounded-full" />
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="flex justify-between text-[11px] font-bold text-[#0A192F]">
+                                <span>Ethics</span>
+                            </div>
+                            <div className="w-full h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
+                                <div className="w-[35%] h-full bg-[#14B8A6] rounded-full" />
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="flex justify-between text-[11px] font-bold text-[#0A192F]">
+                                <span>Legal</span>
+                            </div>
+                            <div className="w-full h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
+                                <div className="w-[50%] h-full bg-[#F59E0B] rounded-full" />
+                            </div>
+                        </div>
                     </div>
-                    <div className="p-8 flex flex-col gap-6">
-                        {certificates.map((cert) => (
-                            <div key={cert.id} className="p-6 rounded-3xl bg-[#F8FAFC] border border-[#F1F5F9] hover:border-[#2B5CFE] group transition-all duration-500 flex items-center gap-5 hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#94A3B8] shadow-sm group-hover:bg-[#2B5CFE] group-hover:text-white transition-all duration-500">
-                                    <FileText size={24} strokeWidth={2.5} />
+                </div>
+
+                {/* Certificate Earned */}
+                <div className="md:col-span-3 bg-white p-10 rounded-[32px] border border-[#F1F5F9] shadow-sm flex flex-col items-center justify-center text-center gap-2 group hover:border-[#002143] transition-all duration-500">
+                    <span className="text-7xl font-black text-[#002143] tracking-tighter group-hover:scale-110 transition-transform">6</span>
+                    <span className="text-sm font-black text-[#387CFF] uppercase tracking-widest">Certificate Earned</span>
+                </div>
+            </div>
+
+            {/* Credit History Section */}
+            <div className="flex flex-col gap-6">
+                <h3 className="text-xl font-black text-[#002143] tracking-tight uppercase">Credit History</h3>
+                <div className="bg-white rounded-[32px] border border-[#F1F5F9] overflow-hidden shadow-sm">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-[#002143] text-white">
+                                <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10]">Event</th>
+                                <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10]">Date</th>
+                                <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10]">Category</th>
+                                <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10]">CPD Hours</th>
+                                <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest text-center">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[#F1F5F9]">
+                            {creditHistory.map((row, idx) => (
+                                <tr key={idx} className="hover:bg-[#F8FAFC] transition-colors group">
+                                    <td className="px-10 py-5 text-[13px] font-bold text-[#94A3B8] group-hover:text-[#0A192F] transition-colors">{row.event}</td>
+                                    <td className="px-10 py-5 text-[13px] font-bold text-[#94A3B8]">{row.date}</td>
+                                    <td className="px-10 py-5 text-[13px] font-bold text-[#94A3B8]">{row.category}</td>
+                                    <td className="px-10 py-5 text-[13px] font-bold text-[#94A3B8]">{row.hours}</td>
+                                    <td className="px-10 py-5 text-center">
+                                        <button className="bg-[#1D4ED8] text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#1E40AF] transition-all shadow-md">
+                                            Download
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* My Certificates Section */}
+            <div className="flex flex-col gap-8">
+                <h3 className="text-xl font-black text-[#002143] tracking-tight uppercase">My Certificates</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {certificates.map((_, idx) => (
+                        <div key={idx} className="bg-white rounded-[32px] border border-[#F1F5F9] overflow-hidden shadow-sm flex flex-col group hover:-translate-y-2 transition-all duration-500">
+                            <div className="bg-[#EAEEF3] p-10 flex flex-col items-center justify-center gap-4 aspect-[4/3]">
+                                <div className="flex items-center gap-1">
+                                    <span className="text-2xl font-black text-[#002143]">l.lomes</span>
+                                    <span className="text-lg font-bold text-[#387CFF]">.ph</span>
                                 </div>
-                                <div className="flex-grow">
-                                    <h4 className="text-[15px] font-black text-[#0A192F] mb-1 leading-tight">{cert.name}</h4>
-                                    <p className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-widest leading-none">{cert.date} • {cert.size}</p>
-                                </div>
-                                <button className="p-3 bg-white border border-[#F1F5F9] rounded-xl text-[#0A192F] hover:bg-[#0A192F] hover:text-white group-hover:shadow-lg transition-all active:scale-90">
-                                    <Download size={18} strokeWidth={3} />
+                                <span className="text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] text-center">Certificate of attendance</span>
+                            </div>
+                            <div className="p-4 bg-white border-t border-[#F1F5F9]">
+                                <button className="w-full bg-[#1D4ED8] text-white py-4 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#1E40AF] transition-all shadow-lg flex items-center justify-center gap-2">
+                                    <Download size={14} />
+                                    Download
                                 </button>
                             </div>
-                        ))}
-                    </div>
-                    <div className="p-10 mt-auto bg-[#F8FAFC]/30 border-t border-[#F1F5F9]">
-                        <button className="w-full py-5 bg-[#0A192F] text-white rounded-[20px] font-black text-xs uppercase tracking-[0.2em] shadow-[0_15px_30px_-5px_rgba(10,25,47,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(10,25,47,0.4)] transition-all hover:scale-[1.02] active:scale-95">
-                            Download Certificate Bundle (ZIP)
-                        </button>
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
