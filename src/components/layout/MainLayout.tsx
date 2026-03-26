@@ -6,7 +6,7 @@ import Topbar from './Topbar';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const isLandingOrAuth = pathname === '/landing' || pathname?.startsWith('/landing/') || pathname === '/login' || pathname === '/signup' || pathname === '/my-tickets';
+    const isLandingOrAuth = pathname === '/landing' || pathname?.startsWith('/landing/') || pathname === '/login' || pathname === '/signup' || pathname === '/my-tickets' || pathname === '/events' || pathname?.startsWith('/events/');
 
     if (isLandingOrAuth) {
         return <>{children}</>;

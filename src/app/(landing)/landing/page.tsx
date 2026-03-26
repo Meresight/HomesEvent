@@ -88,7 +88,7 @@ export default function LandingPage() {
           <nav className="hidden lg:flex items-center gap-10">
             <Link href="/landing" className="text-[#FFB020] font-bold text-sm">Home</Link>
             <Link href="/my-tickets" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</Link>
-            <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Discover Events</a>
+            <Link href="/events" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Discover Events</Link>
             <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Create Events</a>
           </nav>
 
