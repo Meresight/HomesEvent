@@ -12,7 +12,8 @@ import {
     PanelRight,
     ChevronLeft,
     CheckCircle2,
-    User
+    User,
+    LogOut
 } from 'lucide-react';
 import { useSidebar } from '@/store/useSidebar';
 
@@ -30,7 +31,7 @@ export default function Sidebar() {
 
     return (
         <>
-            <aside className={`${isCollapsed ? 'w-[100px]' : 'w-[280px]'} bg-[#0F172A] text-[#FFFFFF] flex-shrink-0 flex flex-col min-h-screen rounded-tr-3xl shadow-[10px_0_40px_rgba(0,0,0,0.1)] z-20 transition-all duration-500 ease-in-out overflow-hidden border-r border-[#FFFFFF]/5`}>
+            <aside className={`${isCollapsed ? 'w-[100px]' : 'w-[280px]'} bg-[#0F172A] text-[#FFFFFF] flex-shrink-0 flex flex-col h-screen sticky top-0 rounded-tr-3xl shadow-[10px_0_40px_rgba(0,0,0,0.1)] z-20 transition-all duration-500 ease-in-out overflow-hidden border-r border-[#FFFFFF]/5`}>
             {/* Logo Section */}
             <div className={`h-24 flex items-center transition-all duration-500 ${isCollapsed ? 'justify-center' : 'px-8 justify-start'}`}>
                 <div className="flex items-center gap-3">
@@ -81,7 +82,7 @@ export default function Sidebar() {
             <div className="h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mx-8 mb-8" />
 
             {/* Navigation */}
-            <nav className="px-5 flex-grow">
+            <nav className="px-5 flex-grow overflow-y-auto scrollbar-hide">
                 <ul className="list-none flex flex-col gap-2">
                     {navItems.map((item) => {
                         const Icon = item.icon;
@@ -111,12 +112,12 @@ export default function Sidebar() {
                 </ul>
             </nav>
 
-            {/* Profile Section */}
-            <div className={`p-6 transition-all duration-500 ${isCollapsed ? 'items-center' : ''}`}>
-                <div className={`group cursor-pointer flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} bg-white/5 p-3 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:border-white/20 overflow-hidden`}>
+            {/* Profile + Dropdown Section */}
+            <div className={`p-6 flex flex-col gap-3 transition-all duration-500 relative ${isCollapsed ? 'items-center' : ''}`}>
+                <div className={`group/profile cursor-pointer flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} bg-white/5 p-3 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:border-white/20 overflow-visible relative`}>
                     <div className="relative flex-shrink-0">
-                        <div className="w-10 h-10 rounded-xl border border-white/10 overflow-hidden shadow-xl relative z-10 transition-transform group-hover:scale-105">
-                            <img src="https://i.pravatar.cc/150?u=jd" alt="User" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        <div className="w-10 h-10 rounded-xl border border-white/10 overflow-hidden shadow-xl relative z-10 transition-transform group-hover/profile:scale-105">
+                            <img src="https://i.pravatar.cc/150?u=jd" alt="User" className="w-full h-full object-cover grayscale group-hover/profile:grayscale-0 transition-all duration-500" />
                         </div>
                         <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 border-2 border-[#0F172A] rounded-full z-20"></div>
                     </div>
@@ -126,7 +127,23 @@ export default function Sidebar() {
                             <p className="text-white/20 text-[8px] font-black uppercase tracking-widest mt-1">Admin Panel</p>
                         </div>
                     )}
+
+                    {/* Popover Dropdown Menu */}
+                    <div className="absolute bottom-full left-0 mb-4 w-[230px] bg-[#1E293B] border border-white/10 rounded-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)] opacity-0 invisible group-hover/profile:opacity-100 group-hover/profile:visible transition-all duration-300 translate-y-2 group-hover/profile:translate-y-0 z-50 overflow-hidden">
+                        <Link href="/profile" className="block px-5 py-4 text-[13px] font-bold text-white hover:bg-white/10 transition-all border-b border-white/5">
+                            <div className="flex items-center gap-3"><User size={16} className="text-white/50" /> My Profile</div>
+                        </Link>
+                        <Link href="/landing" className="w-full px-5 py-4 flex items-center gap-3 text-left text-red-400 hover:bg-red-500/10 transition-all uppercase tracking-widest text-[10px] font-black">
+                            <LogOut size={16} /> Log Out
+                        </Link>
+                    </div>
                 </div>
+
+                {isCollapsed && (
+                    <Link href="/landing" className="w-[50px] h-[50px] flex items-center justify-center bg-white/5 hover:bg-red-500/15 border border-white/10 hover:border-red-500/30 text-white/30 hover:text-red-400 rounded-2xl transition-all duration-300 shadow-xl" title="Log Out">
+                        <LogOut size={18} strokeWidth={2.5} />
+                    </Link>
+                )}
             </div>
         </aside>
         </>

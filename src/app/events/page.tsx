@@ -132,7 +132,7 @@ export default function ManageEvents() {
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-6 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                            <div className="flex items-center gap-6 transition-all duration-500 opacity-100 visible">
                                 <Link 
                                     href={`/events/${event.id}/manage`}
                                     className="bg-[#002143] text-white px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all"

@@ -1,8 +1,17 @@
+"use client";
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+    const isLanding = pathname === '/landing' || pathname?.startsWith('/landing/');
+
+    if (isLanding) {
+        return <>{children}</>;
+    }
+
     return (
         <div className="flex min-h-screen">
             <Sidebar />

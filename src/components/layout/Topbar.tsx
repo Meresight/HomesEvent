@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
-import { Bell, Plus, PanelLeft, PanelRight, Search, Command } from 'lucide-react';
+import Link from 'next/link';
+import { Bell, Plus, PanelLeft, PanelRight, Search, Command, User, LogOut } from 'lucide-react';
 import { useSidebar } from '@/store/useSidebar';
 
 export default function Topbar() {
@@ -35,17 +36,29 @@ export default function Topbar() {
                         <span className="absolute top-2 right-2 w-2 h-2 bg-[#FFB020] rounded-full border-2 border-white shadow-lg animate-pulse"></span>
                     </button>
 
-                    <div className="flex items-center gap-3 cursor-pointer group p-1 hover:bg-[#F8FAFC] rounded-xl transition-all duration-500">
-                        <div className="flex flex-col items-end hidden lg:flex">
-                            <span className="text-xs font-black text-[#0A192F] leading-none mb-1">Kenneth S.</span>
-                            <span className="text-[8px] font-black text-[#94A3B8] uppercase tracking-[0.2em]">Super Admin</span>
+                    <div className="relative group/profile">
+                        <div className="flex items-center gap-3 cursor-pointer p-1 hover:bg-[#F8FAFC] rounded-xl transition-all duration-500">
+                            <div className="flex flex-col items-end hidden lg:flex">
+                                <span className="text-xs font-black text-[#0A192F] leading-none mb-1">Kenneth S.</span>
+                                <span className="text-[8px] font-black text-[#94A3B8] uppercase tracking-[0.2em]">Super Admin</span>
+                            </div>
+                            <div className="w-10 h-10 rounded-xl border border-[#F1F5F9] overflow-hidden shadow-lg group-hover/profile:border-[#E2E8F0] transition-all duration-500 group-hover/profile:scale-105">
+                                <img 
+                                    src="https://i.pravatar.cc/150?u=ken" 
+                                    alt="User avatar" 
+                                    className="w-full h-full object-cover grayscale group-hover/profile:grayscale-0"
+                                />
+                            </div>
                         </div>
-                        <div className="w-10 h-10 rounded-xl border border-[#F1F5F9] overflow-hidden shadow-lg group-hover:border-[#E2E8F0] transition-all duration-500 group-hover:scale-105">
-                            <img 
-                                src="https://i.pravatar.cc/150?u=ken" 
-                                alt="User avatar" 
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0"
-                            />
+
+                        {/* Dropdown Menu */}
+                        <div className="absolute top-[110%] right-0 w-[200px] bg-white border border-[#F1F5F9] rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover/profile:opacity-100 group-hover/profile:visible transition-all duration-300 translate-y-2 group-hover/profile:translate-y-0 z-50 overflow-hidden">
+                            <Link href="/profile" className="flex items-center gap-3 px-5 py-4 text-[12px] font-bold text-[#0A192F] hover:bg-[#F8FAFC] hover:text-[#FFB020] transition-all border-b border-[#F1F5F9]">
+                                <User size={16} className="text-[#94A3B8]" /> My Profile
+                            </Link>
+                            <Link href="/landing" className="w-full flex items-center gap-3 px-5 py-4 text-left text-red-500 hover:bg-red-50 transition-all uppercase tracking-widest text-[10px] font-black">
+                                <LogOut size={16} /> Log out
+                            </Link>
                         </div>
                     </div>
                 </div>
