@@ -28,7 +28,7 @@ export default function LoginPage() {
 
         <nav className="hidden lg:flex items-center gap-10">
           <Link href="/landing" className="text-[#FFB020] font-bold text-sm">Home</Link>
-          <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</a>
+          <Link href="/my-tickets" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</Link>
           <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Discover Events</a>
           <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Create Events</a>
         </nav>
@@ -60,9 +60,8 @@ export default function LoginPage() {
             alt="Graphics" 
             className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-90"
           />
-          <div className="relative z-10 flex flex-col items-center">
-            <img src="/Group 483031.png" alt="Homes.ph Events" className="h-[42px] mb-3" />
-            <img src="/Event Management.png" alt="Event Management" className="h-5" />
+          <div className="relative z-10 flex flex-col items-center w-full px-16">
+            <img src="/Group 483038.png" alt="Homes.ph Events Event Management" className="w-full max-w-[600px] h-auto drop-shadow-2xl" />
           </div>
         </div>
 
@@ -74,7 +73,7 @@ export default function LoginPage() {
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
-                <label className="block text-[#4A5568] text-sm font-semibold mb-2">
+                <label className="block text-[#4A5568] text-[13px] font-bold mb-2">
                   Full Name <span className="text-[#1730A8]">*</span>
                 </label>
                 <input 
@@ -82,13 +81,13 @@ export default function LoginPage() {
                   placeholder="Enter your name"
                   value={formData.fullName}
                   onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                  className="w-full px-4 py-3.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#1730A8] focus:ring-1 focus:ring-[#1730A8]/20 transition-all font-medium placeholder:text-[#A0AEC0]"
+                  className="w-full px-4 py-3.5 rounded-lg border border-[#E2E8F0] bg-white text-sm focus:outline-none focus:border-[#1730A8] focus:ring-1 focus:ring-[#1730A8]/20 transition-all font-medium placeholder:text-[#A0AEC0]"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-[#4A5568] text-sm font-semibold mb-2">
+                <label className="block text-[#4A5568] text-[13px] font-bold mb-2">
                   Password <span className="text-[#1730A8]">*</span>
                 </label>
                 <input 
@@ -96,7 +95,7 @@ export default function LoginPage() {
                   placeholder="Enter your password"
                   value={formData.password}
                   onChange={(e) => setFormData({...formData, password: e.target.value})}
-                  className="w-full px-4 py-3.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#1730A8] focus:ring-1 focus:ring-[#1730A8]/20 transition-all font-medium placeholder:text-[#A0AEC0]"
+                  className="w-full px-4 py-3.5 rounded-lg border border-[#E2E8F0] bg-white text-sm focus:outline-none focus:border-[#1730A8] focus:ring-1 focus:ring-[#1730A8]/20 transition-all font-medium placeholder:text-[#A0AEC0]"
                   required
                 />
               </div>
@@ -111,14 +110,14 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-8 flex items-center justify-center">
-              <span className="text-[#718096] text-xs font-medium">or continue with</span>
+              <span className="text-[#718096] text-[11px] font-bold">or continue with</span>
             </div>
 
             <button 
               type="button"
-              className="mt-6 w-full bg-white border border-[#E2E8F0] text-[#1730A8] py-3.5 rounded-lg font-bold text-[15px] flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
+              className="mt-6 w-full bg-white border border-[#E2E8F0] text-[#1730A8] py-4 rounded-lg font-bold text-[14px] flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
             >
-              <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>

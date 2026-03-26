@@ -28,7 +28,7 @@ export default function SignUpPage() {
 
         <nav className="hidden lg:flex items-center gap-10">
           <Link href="/landing" className="text-[#FFB020] font-bold text-sm">Home</Link>
-          <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</a>
+          <Link href="/my-tickets" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</Link>
           <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Discover Events</a>
           <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Create Events</a>
         </nav>
@@ -60,9 +60,8 @@ export default function SignUpPage() {
             alt="Graphics" 
             className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-90"
           />
-          <div className="relative z-10 flex flex-col items-center">
-            <img src="/Group 483031.png" alt="Homes.ph Events" className="h-[42px] mb-3" />
-            <img src="/Event Management.png" alt="Event Management" className="h-5" />
+          <div className="relative z-10 flex flex-col items-center w-full px-16">
+            <img src="/Group 483038.png" alt="Homes.ph Events Event Management" className="w-full max-w-[600px] h-auto drop-shadow-2xl" />
           </div>
         </div>
 

@@ -64,6 +64,18 @@ const categoryPills = [
 
 export default function LandingPage() {
   const [activeCategory, setActiveCategory] = useState("Seminars");
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = clientWidth * 0.8;
+      scrollRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white font-[var(--font-inter)]">
@@ -74,8 +86,8 @@ export default function LandingPage() {
         </Link>
 
           <nav className="hidden lg:flex items-center gap-10">
-            <a href="#" className="text-[#FFB020] font-bold text-sm">Home</a>
-            <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</a>
+            <Link href="/landing" className="text-[#FFB020] font-bold text-sm">Home</Link>
+            <Link href="/my-tickets" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">My Tickets</Link>
             <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Discover Events</a>
             <a href="#" className="text-[#4A5568] font-bold text-sm hover:text-[#002143]">Create Events</a>
           </nav>
@@ -87,9 +99,9 @@ export default function LandingPage() {
             <Link href="/signup" className="px-6 py-2.5 bg-[#1730A8] text-white rounded-md font-bold text-sm hover:bg-[#112480] transition-all">
               Sign in
             </Link>
-            <button className="px-6 py-2.5 bg-[#F6A51B] text-white rounded-md font-bold text-sm hover:bg-[#E09418] transition-all">
+            <Link href="/landing" className="px-6 py-2.5 bg-[#F6A51B] text-white rounded-md font-bold text-sm hover:bg-[#E09418] transition-all">
               Back
-            </button>
+            </Link>
           </div>
         </header>
 
@@ -198,7 +210,10 @@ export default function LandingPage() {
           </div>
 
           <div className="relative w-full">
-            <div className="flex gap-8 overflow-x-auto pb-10 scrollbar-hide snap-x">
+            <div 
+              ref={scrollRef}
+              className="flex gap-8 overflow-x-auto pb-10 scrollbar-hide snap-x scroll-smooth"
+            >
               {featuredEvents.map((ev, index) => (
                 <div key={index} className="min-w-[380px] w-[380px] h-[480px] rounded-[32px] overflow-hidden relative group cursor-pointer snap-start flex-shrink-0 shadow-lg">
                   <img src={ev.image} alt={ev.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -222,10 +237,16 @@ export default function LandingPage() {
             </div>
 
             {/* Outside navigation buttons for Carousel mirroring Figma design */}
-            <button className="absolute top-[40%] left-[-20px] md:left-2 -translate-y-1/2 w-12 h-12 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center text-[#1730A8] z-10 hover:bg-gray-50 transition-colors">
+            <button 
+              onClick={() => scroll("left")}
+              className="absolute top-[40%] left-[-20px] md:left-2 -translate-y-1/2 w-12 h-12 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center text-[#1730A8] z-10 hover:bg-gray-50 transition-colors"
+            >
               <ChevronLeft size={24} strokeWidth={3} />
             </button>
-            <button className="absolute top-[40%] right-[-20px] md:right-2 -translate-y-1/2 w-12 h-12 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center text-[#1730A8] z-10 hover:bg-gray-50 transition-colors">
+            <button 
+              onClick={() => scroll("right")}
+              className="absolute top-[40%] right-[-20px] md:right-2 -translate-y-1/2 w-12 h-12 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center text-[#1730A8] z-10 hover:bg-gray-50 transition-colors"
+            >
               <ChevronRight size={24} strokeWidth={3} />
             </button>
           </div>
