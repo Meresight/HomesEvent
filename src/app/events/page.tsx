@@ -80,25 +80,28 @@ export default function DiscoverEventsPage() {
       </header>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="relative h-[650px] flex items-center justify-center overflow-hidden mx-6 lg:mx-10 rounded-[48px] mt-6">
-        <img 
-          src="/Group 483039.png" 
-          alt="Discover Background" 
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.8]"
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        {/* Background — same as landing page */}
+        <img
+          src="/Rectangle 12427.png"
+          alt="Discover Background"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        
-        {/* CIRCULAR PROFILE IMAGES (Refinement) */}
-        <div className="absolute left-[5%] top-[25%] hidden xl:block animate-fade-in">
-           <div className="w-[300px] h-[300px] rounded-full border-[10px] border-white/20 overflow-hidden relative shadow-2xl">
-              <img src="/happy-multi-ethnic-business-couple-isolated-png 1.png" className="w-full h-full object-cover scale-[1.8] translate-y-10" />
-              <div className="absolute inset-0 border-[15px] border-white rounded-full"></div>
-           </div>
+        {/* Blue gradient overlay like the home page */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#000a26]/90 via-[#00174f]/75 to-[#00174f]/55" />
+
+        {/* LEFT CIRCLE */}
+        <div className="absolute left-0 bottom-0 hidden xl:block translate-y-[20%] animate-fade-in">
+          <div className="w-[280px] h-[280px] rounded-full overflow-hidden relative shadow-2xl border-[8px] border-white">
+            <img src="/happy-multi-ethnic-business-couple-isolated-png 1.png" className="w-full h-full object-cover scale-[1.6] translate-y-6" />
+          </div>
         </div>
-        <div className="absolute right-[5%] top-[10%] hidden xl:block animate-fade-in-right">
-           <div className="w-[350px] h-[350px] rounded-full border-[10px] border-white/20 overflow-hidden relative shadow-2xl">
-              <img src="/gettyimages-1496378856-612x612 2.png" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 border-[15px] border-white rounded-full"></div>
-           </div>
+
+        {/* RIGHT CIRCLE */}
+        <div className="absolute right-0 top-0 hidden xl:block -translate-y-[10%] animate-fade-in-right">
+          <div className="w-[320px] h-[320px] rounded-full overflow-hidden relative shadow-2xl border-[8px] border-white">
+            <img src="/gettyimages-1496378856-612x612 2.png" className="w-full h-full object-cover" />
+          </div>
         </div>
 
         <div className="relative z-10 text-center max-w-4xl px-6">
