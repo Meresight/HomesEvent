@@ -81,12 +81,12 @@ export default function LandingPage() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <button className="px-6 py-2.5 bg-white border border-[#E2E8F0] text-[#0A192F] rounded-md font-bold text-sm shadow-sm hover:bg-gray-50 transition-all">
+            <Link href="/login" className="px-6 py-2.5 bg-white border border-[#E2E8F0] text-[#0A192F] rounded-md font-bold text-sm shadow-sm hover:bg-gray-50 transition-all">
               Login
-            </button>
-            <button className="px-6 py-2.5 bg-[#1730A8] text-white rounded-md font-bold text-sm hover:bg-[#112480] transition-all">
+            </Link>
+            <Link href="/signup" className="px-6 py-2.5 bg-[#1730A8] text-white rounded-md font-bold text-sm hover:bg-[#112480] transition-all">
               Sign in
-            </button>
+            </Link>
             <button className="px-6 py-2.5 bg-[#F6A51B] text-white rounded-md font-bold text-sm hover:bg-[#E09418] transition-all">
               Back
             </button>
@@ -356,8 +356,8 @@ export default function LandingPage() {
               <ul className="space-y-4">
                 <li><a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">About Us</a></li>
                 <li><a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">FAQs</a></li>
-                <li><a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Login</a></li>
-                <li><a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Register</a></li>
+                <li><Link href="/login" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Login</Link></li>
+                <li><Link href="/signup" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Register</Link></li>
               </ul>
             </div>
 
