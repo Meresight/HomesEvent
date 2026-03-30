@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @import "tailwindcss";
 
 @theme {
@@ -75,4 +76,114 @@ h1, h2, h3, h4 {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
-}
+}
+=======
+@import "tailwindcss";
+
+@theme {
+  /* Homes.ph Premium Aesthetic Palette */
+  --color-primary: #0A192F;
+  --color-accent: #FFB020;
+  --color-blue-premium: #2B5CFE;
+  
+  --color-text-main: #0A192F;
+  --color-text-muted: #94A3B8;
+  --color-text-soft: #64748B;
+  
+  --color-bg-base: #F8FAFC;
+  --color-border-premium: #F1F5F9;
+
+  /* Premium Elevation System */
+  --shadow-premium-sm: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+  --shadow-premium-md: 0 20px 50px -20px rgba(0, 0, 0, 0.08);
+  --shadow-premium-lg: 0 40px 80px -30px rgba(10, 25, 47, 0.12);
+  --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  
+  --radius-premium: 48px;
+  --radius-card: 32px;
+  --radius-inner: 24px;
+}
+
+@layer components {
+  /* Concave Sidebar Effect */
+  .sidebar-active-concave::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 20px 20px 0 0 white;
+    pointer-events: none;
+  }
+  
+  .sidebar-active-concave::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 20px -20px 0 0 white;
+    pointer-events: none;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-premium-md;
+  }
+  
+  .glass-dark {
+    @apply bg-[#0A192F]/80 backdrop-blur-xl border border-white/10 shadow-premium-lg;
+  }
+
+  /* Custom Scrollbar for Premium Feel */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Interactive Elements */
+  .btn-premium {
+    @apply px-8 py-4 bg-primary text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-premium-lg hover:shadow-primary/30;
+  }
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4 {
+  @apply tracking-tight font-black;
+  text-wrap: balance;
+}
+
+/* Micro-animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateX(-50px) rotate(-10deg); }
+  to { opacity: 1; transform: translateX(0) rotate(0); }
+}
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(50px) rotate(10deg); }
+  to { opacity: 1; transform: translateX(0) rotate(0); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 1s ease-out forwards; }
+.animate-fade-in-right { animation: fade-in-right 1.2s ease-out forwards; }
+.animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
+>>>>>>> Stashed changes
