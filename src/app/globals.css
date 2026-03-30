@@ -17,6 +17,7 @@
   --shadow-premium-sm: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
   --shadow-premium-md: 0 20px 50px -20px rgba(0, 0, 0, 0.08);
   --shadow-premium-lg: 0 40px 80px -30px rgba(10, 25, 47, 0.12);
+  --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
   
   --radius-premium: 48px;
   --radius-card: 32px;
@@ -36,6 +37,33 @@
 }
 
 @layer components {
+  /* Concave Sidebar Effect */
+  .sidebar-active-concave::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 20px 20px 0 0 white;
+    pointer-events: none;
+  }
+  
+  .sidebar-active-concave::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 20px -20px 0 0 white;
+    pointer-events: none;
+  }
+
   /* Glassmorphism primitives */
   .glass {
     @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-premium-md;
@@ -76,19 +104,29 @@ h1, h2, h3, h4 {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b6d772 (Fixed errors)
 @keyframes fade-in {
-  from { opacity: 0; transform: translateX(-50px) rotate(-10deg); }
-  to { opacity: 1; transform: translateX(0) rotate(0); }
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
+
 @keyframes fade-in-right {
-  from { opacity: 0; transform: translateX(50px) rotate(10deg); }
-  to { opacity: 1; transform: translateX(0) rotate(0); }
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
+
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 .animate-fade-in { animation: fade-in 1s ease-out forwards; }
 .animate-fade-in-right { animation: fade-in-right 1.2s ease-out forwards; }
 .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9b6d772 (Fixed errors)
