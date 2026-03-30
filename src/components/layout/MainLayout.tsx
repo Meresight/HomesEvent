@@ -1,57 +1,54 @@
 "use client";
-import React from 'react';
-import { usePathname, useRouter } from 'next/navigation';
-import Sidebar from './Sidebar';
-import Topbar from './Topbar';
-import { useAuth } from '@/store/useAuth';
-import { useEffect } from 'react';
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
-<<<<<<< Updated upstream
-    const isLandingOrAuth = pathname === '/landing' || pathname?.startsWith('/landing/') || pathname === '/login' || pathname === '/signup' || pathname === '/my-tickets';
-=======
-    const router = useRouter();
-    const { isAuthenticated } = useAuth();
-    
-    const isLandingOrAuth = 
-      pathname === '/landing' || 
-      pathname?.startsWith('/landing/') || 
-      pathname === '/login' || 
-      pathname === '/signup' || 
-      pathname === '/my-tickets' || 
-      pathname === '/events' || 
-      pathname?.startsWith('/events/') ||
-      pathname === '/admin' ||
-      pathname?.startsWith('/admin/');
+import React, { useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
+import { useAuth } from "@/store/useAuth";
 
-    useEffect(() => {
-        if (typeof window !== 'undefined' && !isLandingOrAuth && !isAuthenticated) {
-            router.push('/login');
-        }
-    }, [isLandingOrAuth, isAuthenticated, router]);
->>>>>>> Stashed changes
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
 
-    if (isLandingOrAuth) {
-        return <>{children}</>;
+  const isLandingOrAuth =
+    pathname === "/landing" ||
+    pathname?.startsWith("/landing/") ||
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/my-tickets" ||
+    pathname === "/events" ||
+    pathname?.startsWith("/events/");
+
+  // Optional: redirect if not authenticated
+  useEffect(() => {
+    if (!isLandingOrAuth && !isAuthenticated) {
+      router.push("/login");
     }
+  }, [isAuthenticated, isLandingOrAuth, router]);
 
-    // Show nothing until redirect occurs (prevents content flash)
-    if (!isAuthenticated) {
-        return null;
-    }
+  if (isLandingOrAuth) {
+    return <>{children}</>;
+  }
 
-    return (
-        <div className="flex min-h-screen">
-            <Sidebar />
-            <div className="flex-grow flex flex-col overflow-hidden">
-                <Topbar />
-                <main className="flex-grow p-8 overflow-y-auto">
-                    <div className="max-w-[1200px] mx-auto">
-                        {children}
-                    </div>
-                </main>
-            </div>
-        </div>
-    );
+  // Prevent flash before redirect
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  return (
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <div className="flex-grow flex flex-col overflow-hidden">
+        <Topbar />
+        <main className="flex-grow p-8 overflow-y-auto">
+          <div className="max-w-[1200px] mx-auto">{children}</div>
+        </main>
+      </div>
+    </div>
+  );
 }
