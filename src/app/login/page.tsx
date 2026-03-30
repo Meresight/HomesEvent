@@ -2,19 +2,34 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/store/useAuth";
 
 export default function LoginPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({ fullName: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
 
+  const { login } = useAuth();
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      router.push("/");
+      
+      // Perform mock login
+      login(formData.fullName);
+      
+      // Determine destination based on role
+      const role = formData.fullName.toLowerCase().includes('admin') ? 'admin' : 'user';
+      
+      if (role === 'admin') {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
     }, 800);
   };
 

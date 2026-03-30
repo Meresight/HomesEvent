@@ -16,6 +16,7 @@ import {
     LogOut
 } from 'lucide-react';
 import { useSidebar } from '@/store/useSidebar';
+import { useAuth } from '@/store/useAuth';
 
 const navItems = [
     { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -23,11 +24,18 @@ const navItems = [
     { name: 'My CPD Records', href: '/cpd', icon: ClipboardList },
     { name: 'Live Check In', href: '/check-in', icon: CheckCircle2 },
     { name: 'My Profile', href: '/profile', icon: User },
+    { name: 'Admin Panel', href: '/admin', icon: Sparkles },
 ];
 
 export default function Sidebar() {
     const pathname = usePathname();
     const { isCollapsed, toggle } = useSidebar();
+    const { user, logout } = useAuth();
+
+    const filteredNavItems = navItems.filter(item => {
+        if (item.name === 'Admin Panel' && user?.role !== 'admin') return false;
+        return true;
+    });
 
     return (
         <>
@@ -84,7 +92,7 @@ export default function Sidebar() {
             {/* Navigation */}
             <nav className="px-5 flex-grow overflow-y-auto scrollbar-hide">
                 <ul className="list-none flex flex-col gap-2">
-                    {navItems.map((item) => {
+                    {filteredNavItems.map((item) => {
                         const Icon = item.icon;
                         const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
                         return (
@@ -123,8 +131,10 @@ export default function Sidebar() {
                     </div>
                     {!isCollapsed && (
                         <div className="flex flex-col overflow-hidden animate-in fade-in duration-500">
-                            <p className="text-white/80 font-bold text-xs truncate leading-none">John Doe</p>
-                            <p className="text-white/20 text-[8px] font-black uppercase tracking-widest mt-1">Admin Panel</p>
+                            <p className="text-white/80 font-bold text-xs truncate leading-none">{user?.fullName || 'Guest'}</p>
+                            <p className="text-white/20 text-[8px] font-black uppercase tracking-widest mt-1">
+                                {user?.role === 'admin' ? 'Administrator' : 'Event Member'}
+                            </p>
                         </div>
                     )}
 
@@ -133,16 +143,23 @@ export default function Sidebar() {
                         <Link href="/profile" className="block px-5 py-4 text-[13px] font-bold text-white hover:bg-white/10 transition-all border-b border-white/5">
                             <div className="flex items-center gap-3"><User size={16} className="text-white/50" /> My Profile</div>
                         </Link>
-                        <Link href="/landing" className="w-full px-5 py-4 flex items-center gap-3 text-left text-red-400 hover:bg-red-500/10 transition-all uppercase tracking-widest text-[10px] font-black">
+                        <button 
+                            onClick={() => logout()}
+                            className="w-full px-5 py-4 flex items-center gap-3 text-left text-red-400 hover:bg-red-500/10 transition-all uppercase tracking-widest text-[10px] font-black"
+                        >
                             <LogOut size={16} /> Log Out
-                        </Link>
+                        </button>
                     </div>
                 </div>
 
                 {isCollapsed && (
-                    <Link href="/landing" className="w-[50px] h-[50px] flex items-center justify-center bg-white/5 hover:bg-red-500/15 border border-white/10 hover:border-red-500/30 text-white/30 hover:text-red-400 rounded-2xl transition-all duration-300 shadow-xl" title="Log Out">
+                    <button 
+                        onClick={() => logout()}
+                        className="w-[50px] h-[50px] flex items-center justify-center bg-white/5 hover:bg-red-500/15 border border-white/10 hover:border-red-500/30 text-white/30 hover:text-red-400 rounded-2xl transition-all duration-300 shadow-xl" 
+                        title="Log Out"
+                    >
                         <LogOut size={18} strokeWidth={2.5} />
-                    </Link>
+                    </button>
                 )}
             </div>
         </aside>

@@ -3,9 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Bell, Plus, PanelLeft, PanelRight, Search, Command, User, LogOut } from 'lucide-react';
 import { useSidebar } from '@/store/useSidebar';
+import { useAuth } from '@/store/useAuth';
 
 export default function Topbar() {
     const { isCollapsed, toggle } = useSidebar();
+    const { user, logout } = useAuth();
 
     return (
         <header className="flex items-center justify-between px-10 h-20 bg-white border-b border-[#F1F5F9] flex-shrink-0 z-10 sticky top-0 transition-all duration-500">
@@ -39,8 +41,10 @@ export default function Topbar() {
                     <div className="relative group/profile">
                         <div className="flex items-center gap-3 cursor-pointer p-1 hover:bg-[#F8FAFC] rounded-xl transition-all duration-500">
                             <div className="flex flex-col items-end hidden lg:flex">
-                                <span className="text-xs font-black text-[#0A192F] leading-none mb-1">Kenneth S.</span>
-                                <span className="text-[8px] font-black text-[#94A3B8] uppercase tracking-[0.2em]">Super Admin</span>
+                                <span className="text-xs font-black text-[#0A192F] leading-none mb-1">{user?.fullName || 'Guest User'}</span>
+                                <span className="text-[8px] font-black text-[#94A3B8] uppercase tracking-[0.2em]">
+                                    {user?.role === 'admin' ? 'Administrator' : 'Event Member'}
+                                </span>
                             </div>
                             <div className="w-10 h-10 rounded-xl border border-[#F1F5F9] overflow-hidden shadow-lg group-hover/profile:border-[#E2E8F0] transition-all duration-500 group-hover/profile:scale-105">
                                 <img 
@@ -56,9 +60,12 @@ export default function Topbar() {
                             <Link href="/profile" className="flex items-center gap-3 px-5 py-4 text-[12px] font-bold text-[#0A192F] hover:bg-[#F8FAFC] hover:text-[#FFB020] transition-all border-b border-[#F1F5F9]">
                                 <User size={16} className="text-[#94A3B8]" /> My Profile
                             </Link>
-                            <Link href="/landing" className="w-full flex items-center gap-3 px-5 py-4 text-left text-red-500 hover:bg-red-50 transition-all uppercase tracking-widest text-[10px] font-black">
+                            <button 
+                                onClick={() => logout()}
+                                className="w-full flex items-center gap-3 px-5 py-4 text-left text-red-500 hover:bg-red-50 transition-all uppercase tracking-widest text-[10px] font-black"
+                            >
                                 <LogOut size={16} /> Log out
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 </div>
