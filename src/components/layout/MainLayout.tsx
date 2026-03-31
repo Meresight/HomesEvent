@@ -15,6 +15,7 @@ export default function MainLayout({
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
+  // Check if current route is landing, auth, or admin related
   const isLandingOrAuth =
     pathname === "/landing" ||
     pathname?.startsWith("/landing/") ||
@@ -22,20 +23,23 @@ export default function MainLayout({
     pathname === "/signup" ||
     pathname === "/my-tickets" ||
     pathname === "/events" ||
-    pathname?.startsWith("/events/");
+    pathname?.startsWith("/events/") ||
+    pathname === "/admin" ||
+    pathname?.startsWith("/admin/");
 
-  // Optional: redirect if not authenticated
   useEffect(() => {
-    if (!isLandingOrAuth && !isAuthenticated) {
+    // Redirect to login if accessing a protected route without auth
+    if (typeof window !== "undefined" && !isLandingOrAuth && !isAuthenticated) {
       router.push("/login");
     }
-  }, [isAuthenticated, isLandingOrAuth, router]);
+  }, [isLandingOrAuth, isAuthenticated, router]);
 
+  // For landing, auth, or admin routes, we don't wrap with Sidebar/Topbar (Admin has its own layout)
   if (isLandingOrAuth) {
     return <>{children}</>;
   }
 
-  // Prevent flash before redirect
+  // Show nothing until redirect occurs (prevents content flash on protected routes)
   if (!isAuthenticated) {
     return null;
   }
