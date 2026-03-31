@@ -17,7 +17,7 @@ export default function Topbar() {
                     <input 
                         type="text" 
                         placeholder="Search for events, venues or speakers..." 
-                        className="pl-12 pr-16 py-3 bg-[#F8FAFC] border border-[#F1F5F9] rounded-2xl text-[11px] font-bold text-[#0A192F] w-[360px] focus:ring-4 focus:ring-[#FFB020]/5 focus:border-[#FFB020]/20 outline-none transition-all shadow-sm group-hover:bg-[#F1F5F9]"
+                        className="pl-12 pr-16 py-3 bg-[#F8FAFC] border border-[#F1F5F9] rounded-2xl text-[11px] font-bold text-[#002143] w-[360px] focus:ring-4 focus:ring-[#FFB020]/5 focus:border-[#FFB020]/20 outline-none transition-all shadow-sm group-hover:bg-[#F1F5F9]"
                     />
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1 px-1.5 py-0.5 bg-white border border-[#F1F5F9] rounded-md shadow-sm">
                         <Command size={8} className="text-[#94A3B8]" />
@@ -27,7 +27,7 @@ export default function Topbar() {
             </div>
 
             <div className="flex items-center gap-8">
-                <button className="hidden sm:flex items-center gap-2.5 bg-[#002143] text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-wider hover:scale-105 hover:shadow-xl transition-all active:scale-95 shadow-[0_10px_20px_-5px_rgba(0,33,67,0.3)]">
+                <button className="hidden sm:flex items-center gap-2.5 bg-[#1730A8] text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-wider hover:bg-[#112480] hover:scale-105 hover:shadow-xl transition-all active:scale-95 shadow-[0_10px_20px_-5px_rgba(23,48,168,0.3)]">
                     <Plus size={16} strokeWidth={3} />
                     Add Event
                 </button>
@@ -41,7 +41,7 @@ export default function Topbar() {
                     <div className="relative group/profile">
                         <div className="flex items-center gap-3 cursor-pointer p-1 hover:bg-[#F8FAFC] rounded-xl transition-all duration-500">
                             <div className="flex flex-col items-end hidden lg:flex">
-                                <span className="text-xs font-black text-[#0A192F] leading-none mb-1">{user?.fullName || 'Guest User'}</span>
+                                <span className="text-xs font-black text-[#002143] leading-none mb-1">{user?.fullName || 'Guest User'}</span>
                                 <span className="text-[8px] font-black text-[#94A3B8] uppercase tracking-[0.2em]">
                                     {user?.role === 'admin' ? 'Administrator' : 'Event Member'}
                                 </span>
@@ -57,7 +57,7 @@ export default function Topbar() {
 
                         {/* Dropdown Menu */}
                         <div className="absolute top-[110%] right-0 w-[200px] bg-white border border-[#F1F5F9] rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover/profile:opacity-100 group-hover/profile:visible transition-all duration-300 translate-y-2 group-hover/profile:translate-y-0 z-50 overflow-hidden">
-                            <Link href="/profile" className="flex items-center gap-3 px-5 py-4 text-[12px] font-bold text-[#0A192F] hover:bg-[#F8FAFC] hover:text-[#FFB020] transition-all border-b border-[#F1F5F9]">
+                            <Link href="/profile" className="flex items-center gap-3 px-5 py-4 text-[12px] font-bold text-[#002143] hover:bg-[#F8FAFC] hover:text-[#FFB020] transition-all border-b border-[#F1F5F9]">
                                 <User size={16} className="text-[#94A3B8]" /> My Profile
                             </Link>
                             <button 

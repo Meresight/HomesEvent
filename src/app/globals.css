@@ -2,15 +2,15 @@
 
 @theme {
   /* Homes.ph Premium Aesthetic Palette */
-  --color-primary: #0A192F;
+  --color-primary: #002143;
   --color-accent: #FFB020;
   --color-blue-premium: #2B5CFE;
   
-  --color-text-main: #0A192F;
+  --color-text-main: #002143;
   --color-text-muted: #94A3B8;
   --color-text-soft: #64748B;
   
-  --color-bg-base: #F8FAFC;
+  --color-bg-base: #E5E7EB;
   --color-border-premium: #F1F5F9;
 
   /* Premium Elevation System */
@@ -70,7 +70,7 @@
   }
   
   .glass-dark {
-    @apply bg-[#0A192F]/80 backdrop-blur-xl border border-white/10 shadow-premium-lg;
+    @apply bg-[#002143]/80 backdrop-blur-xl border border-white/10 shadow-premium-lg;
   }
 
   /* Custom Scrollbar for Premium Feel */

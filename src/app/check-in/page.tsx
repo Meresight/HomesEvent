@@ -25,7 +25,7 @@ export default function LiveCheckIn() {
         <div className="flex flex-col gap-10 pb-24 max-w-[1400px]">
             {/* Header Area */}
             <div className="flex justify-between items-center">
-                <h1 className="text-3xl font-black text-[#0A192F] tracking-tight mb-2 uppercase">Live Check In</h1>
+                <h1 className="text-3xl font-black text-[#002143] tracking-tight mb-2 uppercase">Live Check In</h1>
             </div>
 
             {/* Stats Row */}
@@ -54,13 +54,13 @@ export default function LiveCheckIn() {
                 {/* Left Column: QR Scanner */}
                 <div className="lg:col-span-5 flex flex-col gap-8">
                     <div className="flex flex-col gap-6">
-                        <h3 className="text-xl font-black text-[#0A192F] tracking-tight uppercase">QR Code Scanner</h3>
+                        <h3 className="text-xl font-black text-[#002143] tracking-tight uppercase">QR Code Scanner</h3>
                         <div className="bg-white p-10 rounded-[40px] border border-[#F1F5F9] shadow-sm flex flex-col items-center gap-8">
-                            <div className="w-full aspect-[4/3] rounded-[32px] border-4 border-dashed border-[#387CFF]/20 bg-[#F8FAFC] flex flex-col items-center justify-center gap-4 group transition-all duration-500 hover:border-[#387CFF]/40">
-                                <QrCode size={80} className="text-[#387CFF] opacity-40 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                            <div className="w-full aspect-[4/3] rounded-[32px] border-4 border-dashed border-[#1730A8]/20 bg-[#F8FAFC] flex flex-col items-center justify-center gap-4 group transition-all duration-500 hover:border-[#1730A8]/40">
+                                <QrCode size={80} className="text-[#1730A8] opacity-40 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
                                 <p className="text-xs font-bold text-[#94A3B8] uppercase tracking-widest">Point camera at attendee QR code</p>
                             </div>
-                            <button className="w-full bg-[#1D4ED8] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-[0_20px_40px_-10px_rgba(29,78,216,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+                            <button className="w-full bg-[#1730A8] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-[0_20px_40px_-10px_rgba(29,78,216,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
                                 Enable Camera Scanner
                             </button>
                         </div>
@@ -68,11 +68,11 @@ export default function LiveCheckIn() {
                     
                     <div className="bg-[#EAEEF3]/50 border border-[#F1F5F9] rounded-[24px] p-5 flex items-center justify-between shadow-sm">
                         <div className="flex items-center gap-4">
-                            <div className="w-8 h-8 rounded-full bg-[#387CFF] flex items-center justify-center text-white">
+                            <div className="w-8 h-8 rounded-full bg-[#1730A8] flex items-center justify-center text-white">
                                 <Check size={16} strokeWidth={3} />
                             </div>
-                            <p className="text-[13px] font-bold text-[#0A192F]">
-                                Last checked in: <span className="text-[#387CFF] uppercase tracking-tighter ml-1">Juan dela Cruz - 9:10 AM</span>
+                            <p className="text-[13px] font-bold text-[#002143]">
+                                Last checked in: <span className="text-[#1730A8] uppercase tracking-tighter ml-1">Juan dela Cruz - 9:10 AM</span>
                             </p>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ export default function LiveCheckIn() {
                 {/* Right Column: Manual Search */}
                 <div className="lg:col-span-7 flex flex-col gap-6">
                     <div className="flex justify-between items-end">
-                        <h3 className="text-xl font-black text-[#0A192F] tracking-tight uppercase">Manual Search</h3>
+                        <h3 className="text-xl font-black text-[#1730A8] tracking-tight uppercase">Manual Search</h3>
                     </div>
 
                     <div className="bg-white rounded-[40px] border border-[#F1F5F9] shadow-sm overflow-hidden flex flex-col">
@@ -91,10 +91,10 @@ export default function LiveCheckIn() {
                                 <input 
                                     type="text" 
                                     placeholder="Search here" 
-                                    className="w-full pl-14 pr-6 py-4 bg-[#F8FAFC] rounded-2xl text-[13px] font-bold outline-none border border-transparent focus:border-[#387CFF]/20 focus:ring-4 focus:ring-[#387CFF]/5 transition-all"
+                                    className="w-full pl-14 pr-6 py-4 bg-[#F8FAFC] rounded-2xl text-[13px] font-bold outline-none border border-transparent focus:border-[#1730A8]/20 focus:ring-4 focus:ring-[#1730A8]/5 transition-all"
                                 />
                             </div>
-                            <button className="px-8 py-4 bg-[#F8FAFC] border border-[#F1F5F9] rounded-2xl text-xs font-black text-[#0A192F] flex items-center gap-3 hover:bg-white transition-all">
+                            <button className="px-8 py-4 bg-[#F8FAFC] border border-[#F1F5F9] rounded-2xl text-xs font-black text-[#002143] flex items-center gap-3 hover:bg-white transition-all">
                                 Status
                                 <ChevronDown size={16} />
                             </button>
@@ -103,7 +103,7 @@ export default function LiveCheckIn() {
                         <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
                                 <thead>
-                                    <tr className="bg-[#002143] text-white">
+                                    <tr className="bg-[#1730A8] text-white">
                                         <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10]">Attendee</th>
                                         <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10] text-center">Ticket</th>
                                         <th className="px-10 py-5 text-[11px] font-black uppercase tracking-widest border-r border-[#ffffff10] text-center">Status</th>
@@ -113,7 +113,7 @@ export default function LiveCheckIn() {
                                 <tbody className="divide-y divide-[#F1F5F9]">
                                     {attendees.map((attendee, index) => (
                                         <tr key={index} className="hover:bg-[#F8FAFC] transition-colors group">
-                                            <td className="px-10 py-5 text-[14px] font-bold text-[#0A192F] opacity-70 group-hover:opacity-100 transition-opacity">
+                                            <td className="px-10 py-5 text-[14px] font-bold text-[#002143] opacity-70 group-hover:opacity-100 transition-opacity">
                                                 {attendee.name}
                                             </td>
                                             <td className="px-10 py-5 text-center text-xs font-bold text-[#94A3B8]">
@@ -125,7 +125,7 @@ export default function LiveCheckIn() {
                                                 </div>
                                             </td>
                                             <td className="px-10 py-5 text-right">
-                                                <button className="bg-[#1D4ED8] text-white px-8 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#1E40AF] transition-all shadow-md">
+                                                <button className="bg-[#1730A8] text-white px-8 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#112480] transition-all shadow-md">
                                                     Check-in
                                                 </button>
                                             </td>

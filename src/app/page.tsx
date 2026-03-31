@@ -105,16 +105,19 @@ export default function HomePage() {
                 <div className="lg:col-span-2 bg-white p-12 rounded-[48px] border border-[#F1F5F9] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] flex flex-col h-full relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-[100px] -z-10 opacity-50 group-hover:scale-110 transition-transform duration-700" />
                     
-                    <div className="flex justify-between items-start mb-12 relative z-10">
-                        <div>
-                            <h3 className="text-2xl font-black text-[#0A192F] tracking-tight mb-2">Registration Performance</h3>
-                            <div className="flex items-center gap-3">
-                                <span className="text-[11px] font-black text-[#94A3B8] uppercase tracking-widest bg-[#F8FAFC] px-3 py-1 rounded-full">Monthly Trends</span>
-                            </div>
+                    <div className="flex justify-between items-center mb-8 relative z-10 w-full">
+                        <h3 className="text-[1.35rem] font-bold text-[#002143] tracking-tight">Registration this month</h3>
+                        <div className="flex items-center gap-2">
+                             <span className="text-[13px] font-medium text-[#002143] mr-2">Registration</span>
+                             <button className="p-1 bg-[#1730A8] text-white rounded-md shadow-sm hover:bg-[#112480] transition-colors"><ChevronLeft size={16}/></button>
+                             <button className="p-1 bg-[#1730A8] text-white rounded-md shadow-sm hover:bg-[#112480] transition-colors"><ChevronRight size={16}/></button>
                         </div>
-                        <div className="flex flex-col items-end">
-                             <span className="text-xs font-bold text-[#94A3B8] uppercase tracking-widest mb-1">Current total</span>
-                             <span className="text-3xl font-black text-[#FFB020] tracking-tighter">48 <span className="text-sm text-[#94A3B8] font-bold ml-1">New</span></span>
+                    </div>
+                    
+                    <div className="flex justify-between items-end w-full mb-6 relative z-10 pl-[25%] pr-4">
+                        <span className="text-[12px] font-medium text-[#8D9CAE]">6 Registered</span>
+                        <div className="text-[15px] font-bold text-[#002143]">
+                            Total: <span className="text-[#FFB020]">43</span>
                         </div>
                     </div>
                     
@@ -122,12 +125,7 @@ export default function HomePage() {
                         {isClient && (
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={chartData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
-                                    <defs>
-                                        <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stopColor="#0A192F" />
-                                            <stop offset="100%" stopColor="#1e3a5f" />
-                                        </linearGradient>
-                                    </defs>
+
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
                                     <XAxis 
                                         dataKey="name" 
@@ -147,60 +145,52 @@ export default function HomePage() {
                                     />
                                     <Bar 
                                         dataKey="value" 
-                                        radius={[8, 8, 0, 0]} 
-                                        barSize={40}
-                                    >
-                                        {chartData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={index === 5 ? '#FFB020' : 'url(#barGradient)'} />
-                                        ))}
-                                    </Bar>
+                                        radius={[4, 4, 0, 0]} 
+                                        barSize={32}
+                                        fill="#1730A8"
+                                    />
                                 </BarChart>
                             </ResponsiveContainer>
                         )}
                     </div>
 
-                    <div className="mt-10 flex items-center justify-center gap-8">
-                        <div className="flex items-center gap-3">
-                            <button className="p-2.5 bg-white border border-[#F1F5F9] text-[#0A192F] rounded-xl hover:bg-[#F8FAFC] transition-all shadow-sm"><ChevronLeft size={18}/></button>
-                            <button className="p-2.5 bg-white border border-[#F1F5F9] text-[#0A192F] rounded-xl hover:bg-[#F8FAFC] transition-all shadow-sm"><ChevronRight size={18}/></button>
-                        </div>
-                    </div>
+
                 </div>
 
                 {/* Mini Calendar Widget */}
-                <div className="bg-[#0A192F] p-12 rounded-[48px] shadow-[0_20px_50px_-20px_rgba(10,25,47,0.3)] h-full flex flex-col text-white group overflow-hidden relative">
+                <div className="bg-[#1730A8] p-10 pb-12 rounded-[32px] shadow-[0_20px_50px_-20px_rgba(23,48,168,0.4)] h-full flex flex-col text-white group overflow-hidden relative">
                     <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     
-                    <h3 className="text-2xl font-black tracking-tight mb-12 relative z-10">Event Calendar</h3>
+                    <h3 className="text-xl font-bold tracking-tight mb-10 relative z-10">Calendar</h3>
                     
-                    <div className="flex justify-between items-center mb-10 relative z-10">
+                    <div className="flex justify-center items-center mb-8 relative z-10">
                         <div className="flex gap-4 items-center">
-                             <ChevronLeft size={20} className="text-white/30 cursor-pointer hover:text-[#FFB020] transition-colors" />
-                             <h4 className="text-xs font-black uppercase tracking-[0.3em]">Sept 2021</h4>
-                             <ChevronRight size={20} className="text-white/30 cursor-pointer hover:text-[#FFB020] transition-colors" />
+                             <ChevronLeft size={16} className="text-white cursor-pointer hover:text-white/60 transition-colors" />
+                             <h4 className="text-[13px] font-medium tracking-wide">September 2021</h4>
+                             <ChevronRight size={16} className="text-white cursor-pointer hover:text-white/60 transition-colors" />
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-7 gap-y-6 text-center relative z-10">
-                        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
-                            <span key={`${day}-${index}`} className="text-[10px] font-black text-white/20 uppercase tracking-tighter">{day}</span>
+                    <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center relative z-10 px-2">
+                        {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day, index) => (
+                            <span key={`${day}-${index}`} className="text-[9px] font-bold text-white uppercase tracking-wider mb-2">{day}</span>
                         ))}
-                        {[...Array(30)].map((_, i) => (
-                            <div key={i} className="flex items-center justify-center">
-                                <span className={`w-10 h-10 flex items-center justify-center rounded-2xl text-xs font-bold transition-all cursor-pointer relative ${
-                                    i + 1 === 19 ? 'text-white border border-white group/date' : 'text-white/60 hover:text-white hover:bg-white/5'
-                                }`}>
-                                    {i + 1}
-                                    {i + 1 === 19 && <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#FFB020] rounded-full shadow-[0_0_10px_#FFB020]" />}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
+                        {[...Array(31)].map((_, i) => {
+                            const date = i + 1;
+                            let dateClass = "text-white/90 hover:text-white hover:bg-white/10";
+                            if (date === 7) dateClass = "bg-[#10B981] text-white shadow-md";
+                            if (date === 10) dateClass = "bg-[#F59E0B] text-white shadow-md";
+                            if (date === 19) dateClass = "bg-[#EF4444] text-white shadow-md";
+                            if (date === 30) dateClass = "border-2 border-[#60A5FA] text-white";
 
-                    <div className="mt-auto pt-10 relative z-10">
-                        <button className="w-full py-4 bg-white/10 hover:bg-white/20 rounded-2xl text-xs font-black uppercase tracking-widest transition-all">
-                            View All Events
-                        </button>
+                            return (
+                                <div key={i} className="flex items-center justify-center">
+                                    <span className={`w-8 h-8 flex items-center justify-center rounded-full text-[12px] transition-all cursor-pointer ${dateClass}`}>
+                                        {date}
+                                    </span>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
@@ -210,14 +200,14 @@ export default function HomePage() {
                 {/* Available Events Column */}
                 <div className="xl:col-span-2 bg-white p-12 rounded-[48px] border border-[#F1F5F9] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] relative overflow-hidden group/container flex flex-col">
                     <div className="flex justify-between items-center mb-10">
-                        <h3 className="text-3xl font-black text-[#0A192F] tracking-tight">Available Events</h3>
+                        <h3 className="text-3xl font-black text-[#002143] tracking-tight">Available Events</h3>
                         <div className="flex items-center gap-6">
                             <div className="flex gap-1.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#0A192F]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#002143]" />
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
                             </div>
-                            <span className="text-[11px] font-black text-[#0A192F] cursor-pointer hover:underline uppercase tracking-widest bg-[#F8FAFC] px-4 py-2 rounded-full transition-all hover:bg-[#F1F5F9]">View all</span>
+                            <span className="text-[11px] font-black text-[#002143] cursor-pointer hover:underline uppercase tracking-widest bg-[#F8FAFC] px-4 py-2 rounded-full transition-all hover:bg-[#F1F5F9]">View all</span>
                         </div>
                     </div>
 
@@ -228,14 +218,14 @@ export default function HomePage() {
                                     <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                                     <div className="absolute top-8 left-8 flex gap-2">
                                         {event.tags.map(tag => (
-                                            <span key={tag} className="bg-[#0A192F]/80 backdrop-blur-md text-white text-[9px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-xl">
+                                            <span key={tag} className="bg-[#002143]/80 backdrop-blur-md text-white text-[9px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-xl">
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
                                 </div>
                                 <div className="p-10 flex flex-col flex-grow">
-                                    <h4 className="text-2xl font-black text-[#0A192F] leading-tight mb-3 group-hover:text-[#002143] transition-colors">{event.title}</h4>
+                                    <h4 className="text-2xl font-black text-[#002143] leading-tight mb-3 group-hover:text-[#002143] transition-colors">{event.title}</h4>
                                     <div className="mt-auto">
                                         <p className="text-[11px] font-black text-[#94A3B8] uppercase tracking-[0.2em] mb-4">{event.date}</p>
                                         <div className="flex items-center gap-2 text-[11px] font-bold text-[#002143] bg-[#002143]/5 px-4 py-2 rounded-xl w-fit">
@@ -252,14 +242,14 @@ export default function HomePage() {
                 {/* Recent Registration Column */}
                 <div className="bg-white p-12 rounded-[48px] border border-[#F1F5F9] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] flex flex-col h-full">
                     <div className="flex justify-between items-center mb-10">
-                        <h3 className="text-2xl font-black text-[#0A192F] tracking-tight">Recent Registration</h3>
+                        <h3 className="text-2xl font-black text-[#002143] tracking-tight">Recent Registration</h3>
                         <div className="flex items-center gap-6">
                             <div className="flex gap-1.5">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#002143]" />
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]/30" />
                             </div>
-                            <span className="text-[11px] font-black text-[#0A192F] cursor-pointer hover:underline uppercase tracking-widest bg-[#F8FAFC] px-4 py-2 rounded-full transition-all hover:bg-[#F1F5F9]">View all</span>
+                            <span className="text-[11px] font-black text-[#002143] cursor-pointer hover:underline uppercase tracking-widest bg-[#F8FAFC] px-4 py-2 rounded-full transition-all hover:bg-[#F1F5F9]">View all</span>
                         </div>
                     </div>
 
@@ -271,11 +261,11 @@ export default function HomePage() {
                                         <img src={reg.avatar} alt={reg.name} className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-500" />
                                     </div>
                                     <div>
-                                        <p className="text-sm font-black text-[#0A192F]">{reg.name}</p>
-                                        <p className="text-[10px] font-black text-[#FFB020] uppercase tracking-widest mt-0.5">{reg.event}</p>
+                                        <p className="text-sm font-black text-[#002143]">{reg.name}</p>
+                                        <p className="text-[10px] font-black text-[#FF8A00] uppercase tracking-widest mt-0.5">{reg.event}</p>
                                     </div>
                                 </div>
-                                <button className="text-[10px] font-black text-[#0A192F] uppercase tracking-widest hover:text-white transition-colors bg-[#F8FAFC] px-5 py-3 rounded-xl group-hover/item:bg-[#002143] group-hover/item:shadow-[0_10px_20px_-5px_rgba(0,33,67,0.4)] transition-all">Details</button>
+                                <button className="text-[10px] font-black text-[#002143] uppercase tracking-widest hover:text-white transition-colors bg-[#F8FAFC] px-5 py-3 rounded-xl group-hover/item:bg-[#002143] group-hover/item:shadow-[0_10px_20px_-5px_rgba(0,33,67,0.4)] transition-all">Details</button>
                             </div>
                         ))}
                     </div>
