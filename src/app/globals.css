@@ -104,10 +104,7 @@ h1, h2, h3, h4 {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 9b6d772 (Fixed errors)
 @keyframes fade-in {
   from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
@@ -126,7 +123,3 @@ h1, h2, h3, h4 {
 .animate-fade-in { animation: fade-in 1s ease-out forwards; }
 .animate-fade-in-right { animation: fade-in-right 1.2s ease-out forwards; }
 .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
-<<<<<<< HEAD
-
-=======
->>>>>>> 9b6d772 (Fixed errors)
