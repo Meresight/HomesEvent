@@ -38,7 +38,7 @@ export default function SignUpPage() {
             Login
           </Link>
           <Link href="/signup" className="px-6 py-2.5 bg-[#1730A8] text-white rounded-md font-bold text-sm hover:bg-[#112480] transition-all">
-            Sign in
+            Sign up
           </Link>
           <Link href="/landing" className="px-6 py-2.5 bg-[#F6A51B] text-white rounded-md font-bold text-sm hover:bg-[#E09418] transition-all">
             Back
