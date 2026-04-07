@@ -31,41 +31,19 @@ const chartData = [
     { name: 'Jun 7', value: 5 },
 ];
 
-const availableEvents = [
-    {
-        id: 1,
-        title: 'CPD Ethics Seminar',
-        date: 'December 23,2024',
-        time: 'June 31, 2024 • 12:00AM - 3:30pm',
-        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800',
-        tags: ['Education', 'CPD'],
-        price: 'Free'
-    },
-    {
-        id: 2,
-        title: 'Real Estate Coaching',
         date: 'December 23,2024',
         time: 'March 1, 2024 • 12:00AM - 3:30pm',
-        image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800',
-        tags: ['Find a coach'],
-        price: '₱500'
-    },
-    {
-        id: 3,
-        title: 'Real Estate Seminar',
-        date: 'December 23,2024',
-        time: 'March 1, 2024 • 12:00AM - 3:30pm',
-        image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1591115765373-520b7a21769b?auto=format&fit=crop&q=80&w=800',
         tags: ['Education'],
         price: 'Free'
     }
 ];
 
 const recentRegistrations = [
-    { id: 1, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=1' },
-    { id: 2, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=2' },
-    { id: 3, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=3' },
-    { id: 4, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://i.pravatar.cc/150?u=4' },
+    { id: 1, name: 'J. Dela Cruz', event: 'Legal Updates', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+    { id: 2, name: 'A. Santos', event: 'Ethics 101', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+    { id: 3, name: 'M. Roxas', event: 'Brokerage', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+    { id: 4, name: 'L. Gomez', event: 'Legal Updates', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
 ];
 
 export default function HomePage() {

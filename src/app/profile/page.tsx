@@ -4,10 +4,10 @@ import React from 'react';
 export default function ProfileModule() {
     return (
         <div className="flex flex-col gap-10 pb-24 max-w-[1400px]">
-             {/* Header Area */}
-             <div className="flex justify-between items-center opacity-0 h-0 overflow-hidden">
-                <h1 className="text-3xl font-black text-[#002143] tracking-tight uppercase">My Profile</h1>
-            </div>
+         {/* Header Area */}
+         <div className="flex justify-between items-center">
+            <h1 className="text-3xl font-black text-[#002143] tracking-tight">My Profile</h1>
+        </div>
 
             <div className="bg-white rounded-[40px] border border-[#F1F5F9] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.03)] p-12 lg:p-16 flex flex-col gap-12">
                 <div className="flex flex-col lg:flex-row gap-16 items-start">
@@ -28,12 +28,12 @@ export default function ProfileModule() {
                     <div className="flex-grow flex flex-col gap-10">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {[
-                                { label: 'First Name', placeholder: 'John Doe' },
-                                { label: 'Last Name', placeholder: 'John Doe' },
-                                { label: 'Email Address', placeholder: 'John Doe' },
-                                { label: 'Email Address', placeholder: 'John Doe' },
-                                { label: 'Mobile Number', placeholder: 'John Doe' },
-                                { label: 'License Expiry', placeholder: 'John Doe' },
+                                { label: 'First Name', placeholder: 'Juan', type: 'text' },
+                                { label: 'Last Name', placeholder: 'Dela Cruz', type: 'text' },
+                                { label: 'Email Address', placeholder: 'juan@example.com', type: 'email' },
+                                { label: 'Mobile Number', placeholder: '+63 9XX XXX XXXX', type: 'tel' },
+                                { label: 'PRC License Number', placeholder: 'e.g. 0012345', type: 'text' },
+                                { label: 'License Expiry', placeholder: '', type: 'date' },
                             ].map((field, idx) => (
                                 <div key={idx} className="flex flex-col gap-2.5">
                                     <label className="text-[12px] font-black text-[#002143] uppercase tracking-tight ml-1">{field.label}</label>

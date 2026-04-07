@@ -8,23 +8,35 @@ import {
     ClipboardList, 
     ChevronRight,
     Sparkles,
-    PanelLeft,
-    PanelRight,
     ChevronLeft,
     CheckCircle2,
     User,
-    LogOut
+    LogOut,
+    Ticket,
+    ClipboardCheck,
+    Calendar,
+    Bell,
+    Heart,
+    Settings,
+    HelpCircle
 } from 'lucide-react';
 import { useSidebar } from '@/store/useSidebar';
 import { useAuth } from '@/store/useAuth';
 
 const navItems = [
-    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-    { name: 'Manage Events', href: '/manage-events', icon: CalendarDays },
-    { name: 'My CPD Records', href: '/cpd', icon: ClipboardList },
-    { name: 'Live Check In', href: '/check-in', icon: CheckCircle2 },
-    { name: 'My Profile', href: '/profile', icon: User },
-    { name: 'Admin Panel', href: '/admin', icon: Sparkles },
+    { name: 'Dashboard', href: '/', icon: LayoutDashboard, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Manage Events', href: '/manage-events', icon: CalendarDays, roles: ['admin', 'organizer', 'user'] },
+    { name: 'My Tickets', href: '/my-tickets', icon: Ticket, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Registrations', href: '/registrations', icon: ClipboardCheck, roles: ['admin', 'organizer', 'user'] },
+    { name: 'My CPD Records', href: '/cpd', icon: ClipboardList, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Calendar', href: '/calendar', icon: Calendar, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Live Check In', href: '/check-in', icon: CheckCircle2, roles: ['admin', 'organizer'] },
+    { name: 'Notifications', href: '/notifications', icon: Bell, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Favorites', href: '/favorites', icon: Heart, roles: ['admin', 'organizer', 'user'] },
+    { name: 'My Profile', href: '/profile', icon: User, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Settings', href: '/settings', icon: Settings, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Help', href: '/help', icon: HelpCircle, roles: ['admin', 'organizer', 'user'] },
+    { name: 'Admin Panel', href: '/admin', icon: Sparkles, roles: ['admin'] },
 ];
 
 export default function Sidebar() {
@@ -33,8 +45,8 @@ export default function Sidebar() {
     const { user, logout } = useAuth();
 
     const filteredNavItems = navItems.filter(item => {
-        if (item.name === 'Admin Panel' && user?.role !== 'admin') return false;
-        return true;
+        if (!user) return item.roles.includes('user');
+        return item.roles.includes(user.role);
     });
 
     return (

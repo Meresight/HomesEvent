@@ -211,7 +211,7 @@ export default function RegisterPage() {
       </main>
 
       {/* ─── FOOTER ─── */}
-      <footer className="bg-[#1730A8] pt-20 pb-10 text-white mt-10">
+      <footer className="bg-[#002143] pt-20 pb-10 text-white mt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 px-10 md:px-20">
           <div className="lg:col-span-2">
             <img src="/Group 483036.png" alt="Homes.ph Events" className="h-10 mb-8 brightness-0 invert" />

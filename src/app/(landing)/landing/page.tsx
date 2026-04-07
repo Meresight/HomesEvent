@@ -27,26 +27,26 @@ const featuredEvents = [
   },
   {
     id: 2,
-    title: "Puerto Rico's Rum Fest - Taste Of Rum",
-    category: "WORKSHOP",
-    date: "Monday, April 14, 2025",
-    time: "9:00 AM - 5:00 PM",
+    title: "Corporate Real Estate Strategy & Planning",
+    category: "SEMINAR",
+    date: "Wednesday, May 21, 2025",
+    time: "10:00 AM - 4:00 PM",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 3,
-    title: "Puerto Rico's Rum Fest - Taste Of Rum",
-    category: "WORKSHOP",
-    date: "Monday, April 14, 2025",
-    time: "9:00 AM - 5:00 PM",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800",
+    title: "Global Investment Summit 2025",
+    category: "NETWORKING",
+    date: "Friday, June 06, 2025",
+    time: "1:00 PM - 7:00 PM",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 4,
-    title: "Puerto Rico's Rum Fest - Taste Of Rum",
+    title: "Modern Architectural Workshop",
     category: "WORKSHOP",
-    date: "Monday, April 14, 2025",
-    time: "9:00 AM - 5:00 PM",
+    date: "Saturday, July 12, 2025",
+    time: "9:00 AM - 3:00 PM",
     image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=800",
   },
 ];
@@ -348,7 +348,7 @@ export default function LandingPage() {
         </section>
 
         {/* ─── FOOTER ─── */}
-        <footer className="bg-[#1730A8] pt-20 pb-10 text-white">
+        <footer className="bg-[#002143] pt-20 pb-10 text-white">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 px-10 md:px-20">
             <div className="lg:col-span-2">
               <img src="/Group 483036.png" alt="Homes.ph Events" className="h-10 mb-8 brightness-0 invert" />
