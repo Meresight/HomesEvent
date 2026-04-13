@@ -45,11 +45,11 @@ export default function MainLayout({
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-white">
       <Sidebar />
-      <div className="flex-grow flex flex-col overflow-hidden">
+      <div className="flex-grow flex flex-col overflow-hidden bg-white">
         <Topbar />
-        <main className="flex-grow p-8 overflow-y-auto">
+        <main className="flex-grow p-8 overflow-y-auto bg-[#F8FAFC]">
           <div className="max-w-[1200px] mx-auto">{children}</div>
         </main>
       </div>

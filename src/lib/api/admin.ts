@@ -1,66 +1,78 @@
 import api from './client';
 import type { AdminStats, EventApproval, PaginatedResponse, User, Event } from './types';
 
+const mockDelay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms));
+
 export const adminApi = {
-  /**
-   * Dashboard stats.
-   */
-  getStats: () => api.get<AdminStats>('/admin/stats'),
+  getStats: async (): Promise<AdminStats> => {
+    await mockDelay();
+    return {
+      totalUsers: 1250,
+      activeEvents: 45,
+      totalRevenue: 2500000,
+      pendingApprovals: 3
+    };
+  },
 
-  /**
-   * Get all users (paginated, searchable).
-   */
-  getUsers: (params?: { search?: string; role?: string; page?: number; limit?: number }) =>
-    api.get<PaginatedResponse<User>>('/admin/users', params as Record<string, string | number | boolean | undefined | null>),
+  getUsers: async (params?: { search?: string; role?: string; page?: number; limit?: number }) => {
+    await mockDelay();
+    return {
+      data: [
+        { id: "u1", name: "Admin Setup", email: "admin@homes.ph", role: "admin", createdAt: new Date().toISOString() },
+        { id: "u2", name: "Organizer Juan", email: "juan@dev.com", role: "organizer", createdAt: new Date().toISOString() }
+      ],
+      total: 2,
+      page: 1,
+      limit: 10
+    } as PaginatedResponse<User>;
+  },
 
-  /**
-   * Update a user's role.
-   */
-  updateUserRole: (userId: string, role: 'admin' | 'organizer' | 'user') =>
-    api.patch<User>(`/admin/users/${userId}/role`, { role }),
+  updateUserRole: async (userId: string, role: 'admin' | 'organizer' | 'user') => {
+    await mockDelay();
+    return { id: userId, role } as User;
+  },
 
-  /**
-   * Suspend/ban a user account.
-   */
-  suspendUser: (userId: string, reason: string) =>
-    api.patch<User>(`/admin/users/${userId}/suspend`, { reason }),
+  suspendUser: async (userId: string, reason: string) => {
+    await mockDelay();
+    return { id: userId, isSuspended: true } as User;
+  },
 
-  /**
-   * Get all events pending approval.
-   */
-  getPendingApprovals: () =>
-    api.get<EventApproval[]>('/admin/event-approvals'),
+  getPendingApprovals: async (): Promise<EventApproval[]> => {
+    await mockDelay();
+    return [];
+  },
 
-  /**
-   * Approve an event.
-   */
-  approveEvent: (eventId: string) =>
-    api.patch<EventApproval>(`/admin/event-approvals/${eventId}/approve`),
+  approveEvent: async (eventId: string) => {
+    await mockDelay();
+    return { id: eventId, status: "approved" } as any;
+  },
 
-  /**
-   * Reject an event with a note to the organizer.
-   */
-  rejectEvent: (eventId: string, note: string) =>
-    api.patch<EventApproval>(`/admin/event-approvals/${eventId}/reject`, { note }),
+  rejectEvent: async (eventId: string, note: string) => {
+    await mockDelay();
+    return { id: eventId, status: "rejected" } as any;
+  },
 
-  /**
-   * Get platform-wide revenue reports.
-   */
-  getRevenueReport: (params: { from: string; to: string; groupBy?: 'day' | 'week' | 'month' }) =>
-    api.get<{ labels: string[]; revenue: number[]; registrations: number[] }>(
-      '/admin/reports/revenue',
-      params
-    ),
+  getRevenueReport: async (params: { from: string; to: string; groupBy?: 'day' | 'week' | 'month' }) => {
+    await mockDelay();
+    return {
+      labels: ["Jan", "Feb", "Mar", "Apr"],
+      revenue: [10000, 25000, 45000, 30000],
+      registrations: [50, 150, 200, 120]
+    };
+  },
 
-  /**
-   * Get all events (admin view — includes drafts, cancelled).
-   */
-  getAllEvents: (params?: { search?: string; status?: string; page?: number }) =>
-    api.get<PaginatedResponse<Event>>('/admin/events', params as Record<string, string | number | boolean | undefined | null>),
+  getAllEvents: async (params?: { search?: string; status?: string; page?: number }) => {
+    await mockDelay();
+    return {
+      data: [],
+      total: 0,
+      page: 1,
+      limit: 10
+    } as PaginatedResponse<Event>;
+  },
 
-  /**
-   * Broadcast an announcement to all users.
-   */
-  broadcastAnnouncement: (title: string, message: string) =>
-    api.post<{ sent: number }>('/admin/announcements', { title, message }),
+  broadcastAnnouncement: async (title: string, message: string) => {
+    await mockDelay();
+    return { sent: 1250 };
+  },
 };

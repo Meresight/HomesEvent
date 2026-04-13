@@ -2,66 +2,96 @@ import api from './client';
 import { TokenStorage } from './client';
 import type { AuthResponse, LoginRequest, SignupRequest, ApiResponse } from './types';
 
+const mockDelay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms));
+
 export const authApi = {
-  /**
-   * Log in with email and password.
-   * Stores tokens automatically on success.
-   */
   login: async (data: LoginRequest): Promise<AuthResponse> => {
-    const res = await api.post<AuthResponse>('/auth/login', data, false);
-    TokenStorage.setAccess(res.accessToken);
-    TokenStorage.setRefresh(res.refreshToken);
-    return res;
-  },
+    await mockDelay(800);
+    const mockToken = "mock_access_token_123";
+    const mockRefresh = "mock_refresh_token_456";
+    TokenStorage.setAccess(mockToken);
+    TokenStorage.setRefresh(mockRefresh);
 
-  /**
-   * Register a new user account.
-   */
-  signup: async (data: SignupRequest): Promise<AuthResponse> => {
-    const res = await api.post<AuthResponse>('/auth/register', data, false);
-    TokenStorage.setAccess(res.accessToken);
-    TokenStorage.setRefresh(res.refreshToken);
-    return res;
-  },
+    let simulatedRole = "organizer";
+    let name = "Test Organizer";
 
-  /**
-   * Log out and clear stored tokens.
-   */
-  logout: async (): Promise<void> => {
-    try {
-      await api.post<void>('/auth/logout');
-    } catch {
-      // Best-effort: clear local tokens regardless
-    } finally {
-      TokenStorage.clear();
+    // Allow testing different roles based on the email inputted
+    if (data.email.toLowerCase().includes("admin")) {
+      simulatedRole = "admin";
+      name = "Homes Admin";
+    } else if (data.email.toLowerCase().includes("user")) {
+      simulatedRole = "user";
+      name = "Standard User";
     }
+
+    return {
+      accessToken: mockToken,
+      refreshToken: mockRefresh,
+      user: {
+        id: "u1",
+        email: data.email,
+        name: name,
+        role: simulatedRole as any,
+        createdAt: new Date().toISOString()
+      }
+    };
   },
 
-  /**
-   * Send password reset email.
-   */
-  forgotPassword: async (email: string): Promise<ApiResponse<null>> =>
-    api.post('/auth/forgot-password', { email }, false),
+  signup: async (data: SignupRequest): Promise<AuthResponse> => {
+    await mockDelay(1000);
+    const mockToken = "mock_access_token_123";
+    const mockRefresh = "mock_refresh_token_456";
+    TokenStorage.setAccess(mockToken);
+    TokenStorage.setRefresh(mockRefresh);
+    return {
+      accessToken: mockToken,
+      refreshToken: mockRefresh,
+      user: {
+        id: "u1",
+        email: data.email,
+        name: data.firstName + " " + data.lastName,
+        role: "user",
+        createdAt: new Date().toISOString()
+      }
+    };
+  },
 
-  /**
-   * Reset password using token from email.
-   */
-  resetPassword: async (token: string, newPassword: string): Promise<ApiResponse<null>> =>
-    api.post('/auth/reset-password', { token, newPassword }, false),
+  logout: async (): Promise<void> => {
+    await mockDelay(300);
+    TokenStorage.clear();
+  },
 
-  /**
-   * Verify email address using token.
-   */
-  verifyEmail: async (token: string): Promise<ApiResponse<null>> =>
-    api.post('/auth/verify-email', { token }, false),
+  forgotPassword: async (email: string): Promise<ApiResponse<null>> => {
+    await mockDelay();
+    return { message: "Reset link sent to your email." } as any;
+  },
 
-  /**
-   * Google OAuth — exchange authorization code for tokens.
-   */
+  resetPassword: async (token: string, newPassword: string): Promise<ApiResponse<null>> => {
+    await mockDelay();
+    return { message: "Password successfully reset." } as any;
+  },
+
+  verifyEmail: async (token: string): Promise<ApiResponse<null>> => {
+    await mockDelay();
+    return { message: "Email verified." } as any;
+  },
+
   googleAuth: async (code: string): Promise<AuthResponse> => {
-    const res = await api.post<AuthResponse>('/auth/google', { code }, false);
-    TokenStorage.setAccess(res.accessToken);
-    TokenStorage.setRefresh(res.refreshToken);
-    return res;
+    await mockDelay(800);
+    const mockToken = "mock_access_token_123";
+    const mockRefresh = "mock_refresh_token_456";
+    TokenStorage.setAccess(mockToken);
+    TokenStorage.setRefresh(mockRefresh);
+    return {
+      accessToken: mockToken,
+      refreshToken: mockRefresh,
+      user: {
+        id: "u1",
+        email: "google@user.com",
+        name: "Google User",
+        role: "user",
+        createdAt: new Date().toISOString()
+      }
+    };
   },
 };

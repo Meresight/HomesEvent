@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Calendar, Trash2, MapPin, Upload, Plus } from 'lucide-react';
 
-export default function EditEventPage({ params }: { params: { id: string } }) {
+export default function EditEventPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
     // Basic Information
     const [category, setCategory] = useState("Venue");
     const categories = ["Venue", "CPD", "Technical", "Legal", "Workshop", "Industry", "Mechanical", "Health"];
@@ -39,7 +40,7 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
                 <div className="flex items-center gap-2 text-[12px] font-bold mb-1">
                     <Link href="/manage-events" className="text-[#94A3B8] hover:text-[#002143] transition-colors">Manage Events</Link>
                     <span className="text-[#94A3B8] font-medium">&gt;</span>
-                    <Link href={`/manage-events/${params.id}`} className="text-[#94A3B8] hover:text-[#002143] transition-colors">Mastering the Code</Link>
+                    <Link href={`/manage-events/${id}`} className="text-[#94A3B8] hover:text-[#002143] transition-colors">Mastering the Code</Link>
                     <span className="text-[#94A3B8] font-medium">&gt;</span>
                     <span className="text-[#1730A8]">Edit event</span>
                 </div>

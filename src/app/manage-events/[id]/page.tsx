@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import Link from 'next/link';
 import { 
     Calendar, Users, UserPlus, Banknote, 
@@ -57,7 +57,8 @@ const speakers = [
     }
 ];
 
-export default function SingleEventDashboard({ params }: { params: { id: string } }) {
+export default function SingleEventDashboard({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
     const [activeTab, setActiveTab] = useState("Registrations");
 
     return (
@@ -91,7 +92,7 @@ export default function SingleEventDashboard({ params }: { params: { id: string 
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
-                    <Link href={`/manage-events/${params.id}/edit`} className="bg-white text-[#1730A8] border-2 border-[#1730A8]/20 px-6 py-3 rounded-2xl font-black text-xs hover:border-[#1730A8] transition-all">
+                    <Link href={`/manage-events/${id}/edit`} className="bg-white text-[#1730A8] border-2 border-[#1730A8]/20 px-6 py-3 rounded-2xl font-black text-xs hover:border-[#1730A8] transition-all">
                         Edit event
                     </Link>
                     <Link href="/check-in" className="bg-[#1730A8] text-white px-6 py-3 border-2 border-[#1730A8] rounded-2xl font-black text-xs hover:bg-[#112480] transition-all shadow-md">

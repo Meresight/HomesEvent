@@ -12,31 +12,27 @@ import {
     CheckCircle2,
     User,
     LogOut,
-    Ticket,
-    ClipboardCheck,
-    Calendar,
-    Bell,
-    Heart,
-    Settings,
-    HelpCircle
+    CalendarCheck,
+    Users,
+    BarChart3
 } from 'lucide-react';
 import { useSidebar } from '@/store/useSidebar';
 import { useAuth } from '@/store/useAuth';
 
 const navItems = [
+    // Shared
     { name: 'Dashboard', href: '/', icon: LayoutDashboard, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Manage Events', href: '/manage-events', icon: CalendarDays, roles: ['admin', 'organizer', 'user'] },
-    { name: 'My Tickets', href: '/my-tickets', icon: Ticket, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Registrations', href: '/registrations', icon: ClipboardCheck, roles: ['admin', 'organizer', 'user'] },
-    { name: 'My CPD Records', href: '/cpd', icon: ClipboardList, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Calendar', href: '/calendar', icon: Calendar, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Live Check In', href: '/check-in', icon: CheckCircle2, roles: ['admin', 'organizer'] },
-    { name: 'Notifications', href: '/notifications', icon: Bell, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Favorites', href: '/favorites', icon: Heart, roles: ['admin', 'organizer', 'user'] },
-    { name: 'My Profile', href: '/profile', icon: User, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Settings', href: '/settings', icon: Settings, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Help', href: '/help', icon: HelpCircle, roles: ['admin', 'organizer', 'user'] },
-    { name: 'Admin Panel', href: '/admin', icon: Sparkles, roles: ['admin'] },
+    
+    // Admin Specific
+    { name: 'Event Approvals', href: '/admin/approvals', icon: CalendarCheck, roles: ['admin'] },
+    { name: 'Manage Users', href: '/admin/users', icon: Users, roles: ['admin'] },
+    { name: 'Reports', href: '/admin/reports', icon: BarChart3, roles: ['admin'] },
+
+    // Member Specific (User / Organizer)
+    { name: 'Manage Events', href: '/manage-events', icon: CalendarDays, roles: ['organizer', 'user'] },
+    { name: 'My CPD Records', href: '/cpd', icon: ClipboardList, roles: ['organizer', 'user'] },
+    { name: 'Live Check In', href: '/check-in', icon: CheckCircle2, roles: ['organizer', 'user'] },
+    { name: 'My Profile', href: '/profile', icon: User, roles: ['organizer', 'user'] },
 ];
 
 export default function Sidebar() {
@@ -51,7 +47,15 @@ export default function Sidebar() {
 
     return (
         <>
-            <aside className={`${isCollapsed ? 'w-[100px]' : 'w-[280px]'} bg-[#1730A8] text-[#FFFFFF] flex-shrink-0 flex flex-col h-screen sticky top-0 rounded-tr-3xl shadow-[10px_0_40px_rgba(0,0,0,0.1)] z-20 transition-all duration-500 ease-in-out overflow-hidden border-r border-[#FFFFFF]/5`}>
+            <aside 
+                className={`${isCollapsed ? 'w-[100px]' : 'w-[280px]'} text-[#FFFFFF] flex-shrink-0 flex flex-col h-screen sticky top-0 rounded-tr-3xl shadow-[10px_0_40px_rgba(0,0,0,0.1)] z-20 transition-all duration-500 ease-in-out overflow-hidden border-r border-[#FFFFFF]/5`}
+                style={{
+                    backgroundImage: "url('/Rectangle 1244.png')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                }}
+            >
             {/* Logo Section */}
             <div className={`h-24 flex items-center transition-all duration-500 ${isCollapsed ? 'justify-center' : 'px-8 justify-start'}`}>
                 <div className="flex items-center gap-3">

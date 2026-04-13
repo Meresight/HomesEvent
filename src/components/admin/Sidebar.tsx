@@ -20,9 +20,15 @@ export default function Sidebar({ isCollapsed, onToggle }: { isCollapsed: boolea
     return (
         <aside 
             className={cn(
-                "fixed top-0 left-0 h-full bg-[#1123AD] text-white transition-all duration-300 ease-in-out z-50 flex flex-col pt-8",
+                "fixed top-0 left-0 h-full text-white transition-all duration-300 ease-in-out z-50 flex flex-col pt-8 rounded-tr-3xl shadow-[10px_0_40px_rgba(0,0,0,0.1)] border-r border-[#FFFFFF]/5",
                 isCollapsed ? "w-20" : "w-64"
             )}
+            style={{
+                backgroundImage: "url('/Rectangle 1244.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+            }}
         >
             <div className="px-8 mb-12 flex items-center justify-between transition-all duration-500">
                 {!isCollapsed && (

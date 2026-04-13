@@ -27,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="min-h-screen bg-[#F9FBFF]">
+        <div className="min-h-screen bg-white flex">
             <Sidebar 
                 isCollapsed={isSidebarCollapsed} 
                 onToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
@@ -35,7 +35,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             
             <div 
                 className={cn(
-                    "transition-all duration-300",
+                    "transition-all duration-300 flex-grow bg-[#F9FBFF] min-h-screen",
                     isSidebarCollapsed ? "pl-20" : "pl-64"
                 )}
             >
