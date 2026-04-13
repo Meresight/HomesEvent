@@ -31,6 +31,10 @@ const chartData = [
     { name: 'Jun 7', value: 5 },
 ];
 
+const availableEvents = [
+    {
+        id: 1,
+        title: 'Property Management Seminar',
         date: 'December 23,2024',
         time: 'March 1, 2024 • 12:00AM - 3:30pm',
         image: 'https://images.unsplash.com/photo-1591115765373-520b7a21769b?auto=format&fit=crop&q=80&w=800',
