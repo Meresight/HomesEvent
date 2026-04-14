@@ -35,7 +35,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             
             <div 
                 className={cn(
-                    "transition-all duration-300 flex-grow bg-[#F9FBFF] min-h-screen",
+                    "transition-all duration-300 flex-grow bg-white min-h-screen",
                     isSidebarCollapsed ? "pl-20" : "pl-64"
                 )}
             >
@@ -44,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     onSidebarToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
                 />
                 
-                <main className="pt-[96px] px-8 pb-8">
+                <main className="p-8 bg-[#F8FAFC] min-h-[calc(100vh-80px)]">
                     <div className="max-w-[1400px] mx-auto animate-fade-in">
                         {children}
                     </div>

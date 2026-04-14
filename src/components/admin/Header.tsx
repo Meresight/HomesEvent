@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
-import { Search, Bell, Plus, LayoutPanelLeft, Command } from 'lucide-react';
+import { Search, Bell, Plus, LayoutPanelLeft, Command, User, LogOut } from 'lucide-react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/store/useAuth';
 
@@ -9,8 +10,7 @@ export default function AdminHeader({ onSidebarToggle, isSidebarCollapsed }: { o
 
     return (
         <header className={cn(
-            "fixed top-0 right-0 bg-white/80 backdrop-blur-md border-b border-gray-100 h-20 z-40 transition-all duration-300 shadow-sm",
-            isSidebarCollapsed ? "left-20" : "left-64"
+            "bg-white border-b border-[#F1F5F9] h-20 z-40 transition-all duration-300 w-full"
         )}>
             <div className="h-full px-8 flex items-center justify-between">
                 <div className="flex items-center gap-6">
@@ -47,17 +47,37 @@ export default function AdminHeader({ onSidebarToggle, isSidebarCollapsed }: { o
                             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
                         </button>
                         
-                        <div className="flex items-center gap-4 pl-4 border-l border-gray-100">
-                            <div className="flex flex-col items-end hidden sm:flex">
-                                <span className="text-sm font-bold text-gray-800 leading-none">{user?.fullName || 'Admin'}</span>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-[#1123AD] mt-1">Administrator</span>
+                        <div className="relative group/profile">
+                            <div className="flex items-center gap-4 pl-4 border-l border-gray-100 cursor-pointer">
+                                <div className="flex flex-col items-end hidden sm:flex">
+                                    <span className="text-sm font-bold text-gray-800 leading-none">{user?.fullName || 'Admin'}</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#1123AD] mt-1">Administrator</span>
+                                </div>
+                                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#1123AD]/10 shadow-sm transition-all group-hover/profile:scale-105">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150&h=150" 
+                                        alt="Admin User" 
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
-                            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#1123AD]/10 shadow-sm transition-all hover:scale-105">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150&h=150" 
-                                    alt="Admin User" 
-                                    className="w-full h-full object-cover"
-                                />
+
+                            {/* Dropdown Menu - No Logout */}
+                            <div className="absolute top-[110%] right-0 w-[200px] bg-white border border-[#F1F5F9] rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover/profile:opacity-100 group-hover/profile:visible transition-all duration-300 translate-y-2 group-hover/profile:translate-y-0 z-50 overflow-hidden">
+                                <Link 
+                                    href="/admin/profile" 
+                                    className="flex items-center gap-3 px-5 py-4 text-[12px] font-bold text-[#002143] hover:bg-[#F8FAFC] hover:text-[#1123AD] transition-all border-b border-[#F1F5F9]"
+                                >
+                                    <User size={16} className="text-gray-400" /> 
+                                    My Profile
+                                </Link>
+                                <button 
+                                    onClick={() => logout()}
+                                    className="w-full flex items-center gap-3 px-5 py-4 text-left text-red-500 hover:bg-red-50 transition-all uppercase tracking-widest text-[10px] font-black"
+                                >
+                                    <LogOut size={16} /> 
+                                    Log out
+                                </button>
                             </div>
                         </div>
                     </div>

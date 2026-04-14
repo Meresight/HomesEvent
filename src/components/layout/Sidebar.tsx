@@ -136,39 +136,10 @@ export default function Sidebar() {
                 </ul>
             </nav>
 
-            {/* Profile + Dropdown Section */}
-            <div className={`p-6 flex flex-col gap-3 transition-all duration-500 relative ${isCollapsed ? 'items-center' : ''}`}>
-                <div className={`group/profile cursor-pointer flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} bg-white/5 p-3 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:border-white/20 overflow-visible relative`}>
-                    <div className="relative flex-shrink-0">
-                        <div className="w-10 h-10 rounded-xl border border-white/10 overflow-hidden shadow-xl relative z-10 transition-transform group-hover/profile:scale-105">
-                            <img src="https://i.pravatar.cc/150?u=jd" alt="User" className="w-full h-full object-cover grayscale group-hover/profile:grayscale-0 transition-all duration-500" />
-                        </div>
-                        <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 border-2 border-[#1730A8] rounded-full z-20"></div>
-                    </div>
-                    {!isCollapsed && (
-                        <div className="flex flex-col overflow-hidden animate-in fade-in duration-500">
-                            <p className="text-white font-bold text-xs truncate leading-none">{user?.fullName || 'Guest'}</p>
-                            <p className="text-white/80 text-[8px] font-black uppercase tracking-widest mt-1">
-                                {user?.role === 'admin' ? 'Administrator' : 'Event Member'}
-                            </p>
-                        </div>
-                    )}
 
-                    {/* Popover Dropdown Menu */}
-                    <div className="absolute bottom-full left-0 mb-4 w-[230px] bg-[#112480] border border-white/10 rounded-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)] opacity-0 invisible group-hover/profile:opacity-100 group-hover/profile:visible transition-all duration-300 translate-y-2 group-hover/profile:translate-y-0 z-50 overflow-hidden">
-                        <Link href="/profile" className="block px-5 py-4 text-[13px] font-bold text-white hover:bg-white/10 transition-all border-b border-white/5">
-                            <div className="flex items-center gap-3"><User size={16} className="text-white/50" /> My Profile</div>
-                        </Link>
-                        <button 
-                            onClick={() => logout()}
-                            className="w-full px-5 py-4 flex items-center gap-3 text-left text-red-400 hover:bg-red-500/10 transition-all uppercase tracking-widest text-[10px] font-black"
-                        >
-                            <LogOut size={16} /> Log Out
-                        </button>
-                    </div>
-                </div>
-
-                {isCollapsed && (
+            {/* Minimal Logout for Collapsed State */}
+            {isCollapsed && (
+                <div className="p-6 flex flex-col items-center gap-3 transition-all duration-500">
                     <button 
                         onClick={() => logout()}
                         className="w-[50px] h-[50px] flex items-center justify-center bg-white/5 hover:bg-red-500/15 border border-white/10 hover:border-red-500/30 text-white/80 hover:text-red-400 rounded-2xl transition-all duration-300 shadow-xl" 
@@ -176,8 +147,8 @@ export default function Sidebar() {
                     >
                         <LogOut size={18} strokeWidth={2.5} />
                     </button>
-                )}
-            </div>
+                </div>
+            )}
         </aside>
         </>
     );
